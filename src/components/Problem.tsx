@@ -1,3 +1,4 @@
+import { DotBg, Glow, LogoMark, TopEdge } from './decor'
 import { CountUp, MaskLinesOnView, Reveal, Section, SectionHead } from './ui'
 
 const PAIN = [
@@ -25,7 +26,21 @@ const PAIN = [
 
 export function Problem() {
 	return (
-		<Section id="problem">
+		<Section
+			id="problem"
+			className="noise"
+			decor={
+				<>
+					<TopEdge />
+					<DotBg />
+					<Glow
+						className="-right-40 top-10"
+						size={520}
+						strength={0.14}
+					/>
+				</>
+			}
+		>
 			<div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-20">
 				<SectionHead
 					kicker="Как это устроено сейчас"
@@ -84,7 +99,23 @@ const ROLES = [
 
 export function Roles() {
 	return (
-		<Section id="roles">
+		<Section
+			id="roles"
+			decor={
+				<>
+					<LogoMark
+						className="-left-24 top-1/2 -translate-y-1/2"
+						width={900}
+						opacity={0.035}
+					/>
+					<Glow
+						className="left-1/4 top-0"
+						size={560}
+						strength={0.12}
+					/>
+				</>
+			}
+		>
 			<div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-start lg:gap-20">
 				<Reveal className="lg:sticky lg:top-28">
 					<p className="kicker">Кто чем пользуется</p>

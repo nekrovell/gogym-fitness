@@ -1,11 +1,23 @@
 import { motion } from 'framer-motion'
 import { M } from '../mockups'
+import { DotBg, Glow, GridBg, LogoMark, TopEdge } from './decor'
 import { Bullet, Phone, Reveal, Section, SectionHead, Shot } from './ui'
 
 // ── Тренеры и специалисты ──
 export function Staff() {
 	return (
-		<Section>
+		<Section
+			decor={
+				<>
+					<TopEdge />
+					<Glow
+						className="left-1/2 top-0 -translate-x-1/2"
+						size={700}
+						strength={0.1}
+					/>
+				</>
+			}
+		>
 			<SectionHead
 				kicker="Персонал"
 				title="Каждый ведёт свою работу сам"
@@ -14,7 +26,7 @@ export function Staff() {
 
 			<div className="mt-12 grid gap-10 md:mt-16 lg:grid-cols-2 lg:gap-16">
 				<Reveal>
-					<div className="rounded-2xl border border-line bg-surface p-7 md:p-9">
+					<div className="card-grad p-7 md:p-9">
 						<h3 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
 							Тренер
 						</h3>
@@ -43,7 +55,7 @@ export function Staff() {
 				</Reveal>
 
 				<Reveal delay={0.1}>
-					<div className="rounded-2xl border border-line bg-surface p-7 md:p-9">
+					<div className="card-grad p-7 md:p-9">
 						<h3 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
 							Специалист
 						</h3>
@@ -95,7 +107,20 @@ const SOURCES = [
 
 export function Money() {
 	return (
-		<Section id="money">
+		<Section
+			id="money"
+			className="noise"
+			decor={
+				<>
+					<GridBg step={56} />
+					<Glow
+						className="-right-24 top-1/4"
+						size={560}
+						strength={0.15}
+					/>
+				</>
+			}
+		>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<div>
 					<SectionHead
@@ -165,7 +190,11 @@ export function Money() {
 // ── Отчёты ──
 export function Reports() {
 	return (
-		<Section>
+		<Section
+			decor={
+				<DotBg fade="radial-gradient(ellipse 55% 70% at 22% 50%, black 5%, transparent 70%)" />
+			}
+		>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<Reveal className="order-2 lg:order-1">
 					<div className="grid grid-cols-2 gap-5">
@@ -222,7 +251,17 @@ const SETUP = [
 
 export function Setup() {
 	return (
-		<Section>
+		<Section
+			decor={
+				<>
+					<TopEdge />
+					<GridBg
+						step={90}
+						fade="radial-gradient(ellipse 80% 70% at 50% 30%, black 10%, transparent 80%)"
+					/>
+				</>
+			}
+		>
 			<SectionHead
 				kicker="Настройка"
 				title="Клуб настраивает себя сам"
@@ -257,7 +296,22 @@ export function Setup() {
 // ── Контроль ──
 export function Control() {
 	return (
-		<Section>
+		<Section
+			decor={
+				<>
+					<LogoMark
+						className="-right-32 bottom-0"
+						width={720}
+						opacity={0.03}
+					/>
+					<Glow
+						className="left-0 top-1/3"
+						size={520}
+						strength={0.12}
+					/>
+				</>
+			}
+		>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<div>
 					<SectionHead

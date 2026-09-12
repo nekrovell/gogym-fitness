@@ -225,18 +225,21 @@ export function TiltCard({
 export function Section({
 	id,
 	children,
-	className = ''
+	className = '',
+	decor
 }: {
 	id?: string
 	children: ReactNode
 	className?: string
+	decor?: ReactNode
 }) {
 	return (
 		<section
 			id={id}
-			className={`relative py-20 md:py-28 ${className}`}
+			className={`relative overflow-hidden py-20 md:py-28 ${className}`}
 		>
-			<div className="mx-auto max-w-page px-5 md:px-8">{children}</div>
+			{decor}
+			<div className="relative mx-auto max-w-page px-5 md:px-8">{children}</div>
 		</section>
 	)
 }
@@ -290,12 +293,14 @@ export function Phone({
 	// Готовый мокап показываем как есть — рамка не нужна
 	if (src) {
 		return (
-			<img
-				src={src}
-				alt={label}
-				loading="lazy"
-				className={`block w-full object-contain ${className}`}
-			/>
+			<div className={`mock-glow ${className}`}>
+				<img
+					src={src}
+					alt={label}
+					loading="lazy"
+					className="block w-full object-contain"
+				/>
+			</div>
 		)
 	}
 

@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react'
 import { useState } from 'react'
+import { Glow, GridBg, LogoMark, TopEdge } from './decor'
 import { CountUp, Reveal, Section, SectionHead, TiltCard } from './ui'
 
 type Plan = {
@@ -72,7 +73,24 @@ export function Pricing() {
 	const [year, setYear] = useState(false)
 
 	return (
-		<Section id="pricing">
+		<Section
+			id="pricing"
+			className="noise"
+			decor={
+				<>
+					<TopEdge />
+					<GridBg
+						step={64}
+						fade="radial-gradient(ellipse 75% 65% at 50% 25%, black 10%, transparent 78%)"
+					/>
+					<Glow
+						className="right-0 top-1/3"
+						size={640}
+						strength={0.16}
+					/>
+				</>
+			}
+		>
 			<SectionHead
 				kicker="Тарифы"
 				title="Платите за размер клуба, а не за функции"
@@ -124,9 +142,7 @@ export function Pricing() {
 						<TiltCard className="h-full">
 							<div
 								className={`flex h-full flex-col rounded-2xl p-7 transition ${
-									p.hot
-										? 'bg-lime text-ink'
-										: 'border border-line bg-surface text-white'
+									p.hot ? 'bg-lime text-ink' : 'card-grad text-white'
 								}`}
 							>
 								{p.hot && (
@@ -197,7 +213,7 @@ export function Pricing() {
 
 			{/* Что входит */}
 			<Reveal delay={0.1}>
-				<div className="mt-16 rounded-2xl border border-line bg-surface p-7 md:mt-20 md:p-10">
+				<div className="card-grad mt-16 p-7 md:mt-20 md:p-10">
 					<h3 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
 						Всё это есть даже на бесплатном плане
 					</h3>
@@ -243,7 +259,22 @@ const TIMELINE = [
 
 export function Trial() {
 	return (
-		<Section>
+		<Section
+			decor={
+				<>
+					<LogoMark
+						className="-left-20 bottom-0"
+						width={820}
+						opacity={0.04}
+					/>
+					<Glow
+						className="left-1/3 top-0"
+						size={600}
+						strength={0.14}
+					/>
+				</>
+			}
+		>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<Reveal>
 					<p className="kicker">Начало работы</p>

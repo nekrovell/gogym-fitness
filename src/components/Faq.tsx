@@ -1,6 +1,7 @@
 import { Minus, Plus } from 'lucide-react'
 import { useState } from 'react'
 import logo from '../assets/logo-dark-small.png'
+import { Beam, DotBg, Glow, TopEdge } from './decor'
 import { Reveal, Section, SectionHead } from './ui'
 
 // ── Почему мы ──
@@ -33,7 +34,20 @@ const WHY = [
 
 export function Why() {
 	return (
-		<Section>
+		<Section
+			className="noise"
+			decor={
+				<>
+					<TopEdge />
+					<Beam className="inset-y-0 left-0 w-3/4" />
+					<Glow
+						className="-right-32 bottom-0"
+						size={560}
+						strength={0.13}
+					/>
+				</>
+			}
+		>
 			<SectionHead
 				kicker="Почему мы"
 				title="Что меняется в первый же день"
@@ -108,7 +122,15 @@ export function Faq() {
 	const [open, setOpen] = useState<number | null>(0)
 
 	return (
-		<Section id="faq">
+		<Section
+			id="faq"
+			decor={
+				<DotBg
+					step={30}
+					fade="radial-gradient(ellipse 50% 60% at 85% 30%, black 5%, transparent 70%)"
+				/>
+			}
+		>
 			<SectionHead
 				kicker="Вопросы"
 				title="То, о чём спрашивают чаще всего"
@@ -173,9 +195,34 @@ const STEPS = [
 
 export function Start() {
 	return (
-		<Section id="start">
-			<div className="overflow-hidden rounded-3xl bg-lime p-8 md:p-14">
-				<Reveal>
+		<Section
+			id="start"
+			decor={
+				<Glow
+					className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+					size={820}
+					strength={0.1}
+				/>
+			}
+		>
+			<div className="relative overflow-hidden rounded-3xl bg-lime p-8 md:p-14">
+				{/* Узор поверх зелёного */}
+				<div
+					aria-hidden
+					className="pointer-events-none absolute inset-0 opacity-[0.07]"
+					style={{
+						backgroundImage:
+							'linear-gradient(rgba(0,0,0,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.6) 1px, transparent 1px)',
+						backgroundSize: '46px 46px'
+					}}
+				/>
+				<img
+					src={logo}
+					alt=""
+					aria-hidden
+					className="pointer-events-none absolute -bottom-10 -right-10 w-[340px] select-none opacity-[0.07] md:w-[460px]"
+				/>
+				<Reveal className="relative">
 					<h2 className="h2 max-w-[18ch] text-ink">
 						Попробуйте месяц на своём клубе
 					</h2>
@@ -185,7 +232,7 @@ export function Start() {
 					</p>
 				</Reveal>
 
-				<div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-14">
+				<div className="relative mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-14">
 					{STEPS.map((s, i) => (
 						<Reveal
 							key={s.t}
@@ -206,7 +253,10 @@ export function Start() {
 					))}
 				</div>
 
-				<Reveal delay={0.2}>
+				<Reveal
+					delay={0.2}
+					className="relative"
+				>
 					<div className="mt-11 flex flex-col gap-3 sm:flex-row md:mt-14">
 						<a
 							href="https://wa.me/77074108415"

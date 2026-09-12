@@ -6,6 +6,7 @@ import { Control, Money, Reports, Setup, Staff } from './components/Owner'
 import { Pricing, Trial } from './components/Pricing'
 import { Problem, Roles } from './components/Problem'
 import { Showcase } from './components/Showcase'
+import { Divider } from './components/decor'
 
 export default function App() {
 	return (
@@ -24,10 +25,14 @@ export default function App() {
 				<Admin />
 				<Staff />
 
+				<Divider />
+
 				<Money />
 				<Reports />
 				<Setup />
 				<Control />
+
+				<Divider />
 
 				<Pricing />
 				<Trial />

@@ -1,4 +1,5 @@
 import { M } from '../mockups'
+import { Beam, Glow, GridBg } from './decor'
 import { Bullet, Phone, Reveal, Section, SectionHead } from './ui'
 
 // ── Клиент: абонемент и вход ──
@@ -91,7 +92,15 @@ const CLIENT_BLOCKS = [
 
 export function ClientRest() {
 	return (
-		<Section>
+		<Section
+			decor={
+				<Glow
+					className="-left-32 bottom-0"
+					size={600}
+					strength={0.13}
+				/>
+			}
+		>
 			<SectionHead
 				kicker="Клиент"
 				title="Что ещё он делает сам"
@@ -147,7 +156,15 @@ export function ClientRest() {
 // ── Администратор ──
 export function Admin() {
 	return (
-		<Section>
+		<Section
+			className="noise"
+			decor={
+				<>
+					<GridBg fade="radial-gradient(ellipse 60% 70% at 75% 50%, black 10%, transparent 75%)" />
+					<Beam className="inset-y-0 right-0 w-2/3" />
+				</>
+			}
+		>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<div className="order-2 lg:order-1">
 					<SectionHead

@@ -124,14 +124,14 @@ export function ClientRest() {
 						note="тренировки клиента"
 					/>
 					<Phone
-						src={M.measurements}
-						label="Замеры"
-						note="динамика по месяцам"
+						src={M.partner}
+						label="Код для партнёра"
+						note="абонемент на двоих"
 					/>
 					<Phone
-						src={M.bar}
-						label="Витрина бара"
-						note="товары и корзина"
+						src={M.history}
+						label="История посещений"
+						note="когда приходил"
 					/>
 					<Phone
 						src={M.booking}

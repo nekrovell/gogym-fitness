@@ -16,6 +16,8 @@ import membership from './assets/mockups/membership.png'
 import qr from './assets/mockups/qr.png'
 // import schedule from './assets/mockups/schedule.png'
 // import booking from './assets/mockups/booking.png'
+// import partner from './assets/mockups/partner.png'
+// import history from './assets/mockups/history.png'
 
 // ── Администратор ──
 // import adminHome from './assets/mockups/admin-home.png'
@@ -44,6 +46,8 @@ export const M = {
 	measurements: measurements,
 	schedule: undefined,
 	booking: undefined,
+	partner: undefined,
+	history: undefined,
 
 	// Администратор
 	adminHome: undefined,

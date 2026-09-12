@@ -29,7 +29,7 @@ export function Staff() {
 							<Bullet>Выгрузка в таблицу за любой период</Bullet>
 						</ul>
 
-						<div className="mt-7 grid grid-cols-2 gap-3">
+						<div className="mt-8 grid grid-cols-2 gap-5">
 							<Phone
 								src={M.trainerSchedule}
 								label="Расписание"
@@ -60,7 +60,7 @@ export function Staff() {
 							</Bullet>
 						</ul>
 
-						<div className="mt-7 grid grid-cols-2 gap-3">
+						<div className="mt-8 grid grid-cols-2 gap-5">
 							<Phone
 								src={M.staffDay}
 								label="Записи на день"
@@ -168,7 +168,7 @@ export function Reports() {
 		<Section>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<Reveal className="order-2 lg:order-1">
-					<div className="grid grid-cols-2 gap-4">
+					<div className="grid grid-cols-2 gap-5">
 						<Phone
 							src={M.reportSetup}
 							label="Настройка отчёта"
@@ -282,7 +282,7 @@ export function Control() {
 				</div>
 
 				<Reveal delay={0.1}>
-					<div className="mx-auto grid max-w-[420px] grid-cols-2 gap-4">
+					<div className="mx-auto grid max-w-[540px] grid-cols-2 gap-5">
 						<Phone
 							src={M.auditLog}
 							label="Журнал правок"

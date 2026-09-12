@@ -109,7 +109,7 @@ export function CountUp({
 	className?: string
 }) {
 	const ref = useRef<HTMLSpanElement>(null)
-	const inView = useInView(ref, { once: true, margin: '-100px' })
+	const inView = useInView(ref, { once: true, amount: 0.4 })
 	const [value, setValue] = useState(0)
 
 	useEffect(() => {

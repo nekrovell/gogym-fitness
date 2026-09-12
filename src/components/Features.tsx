@@ -7,7 +7,7 @@ export function ClientMembership() {
 		<Section>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<Reveal>
-					<div className="mx-auto grid max-w-[420px] grid-cols-2 gap-4 md:gap-5">
+					<div className="mx-auto grid max-w-[540px] grid-cols-2 gap-5 md:gap-6">
 						<Phone
 							src={M.membership}
 							label="Главный экран"
@@ -117,7 +117,7 @@ export function ClientRest() {
 			</div>
 
 			<Reveal delay={0.1}>
-				<div className="mt-12 grid grid-cols-2 gap-4 md:mt-16 md:grid-cols-4 md:gap-5">
+				<div className="mt-12 grid grid-cols-2 gap-5 md:mt-16 md:grid-cols-4 md:gap-6">
 					<Phone
 						src={M.schedule}
 						label="Расписание"
@@ -189,7 +189,7 @@ export function Admin() {
 				</div>
 
 				<Reveal className="order-1 lg:order-2">
-					<div className="mx-auto grid max-w-[480px] grid-cols-3 gap-3 md:gap-4">
+					<div className="mx-auto grid max-w-[620px] grid-cols-3 gap-4 md:gap-5">
 						<Phone
 							src={M.adminHome}
 							label="Смена"

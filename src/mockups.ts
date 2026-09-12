@@ -11,18 +11,18 @@
 
 // ── Клиент ──
 import bar from './assets/mockups/bar.png'
+import booking from './assets/mockups/booking.png'
+import history from './assets/mockups/history.png'
 import measurements from './assets/mockups/measurements.png'
 import membership from './assets/mockups/membership.png'
+import partner from './assets/mockups/partner.png'
 import qr from './assets/mockups/qr.png'
-// import schedule from './assets/mockups/schedule.png'
-// import booking from './assets/mockups/booking.png'
-// import partner from './assets/mockups/partner.png'
-// import history from './assets/mockups/history.png'
+import schedule from './assets/mockups/schedule.png'
 
 // ── Администратор ──
-// import adminHome from './assets/mockups/admin-home.png'
+import adminHome from './assets/mockups/adminHome.png'
 // import scanner from './assets/mockups/scanner.png'
-// import clientCard from './assets/mockups/client-card.png'
+import clientCard from './assets/mockups/clientCard.png'
 
 // ── Тренер и специалист ──
 // import trainerSchedule from './assets/mockups/trainer-schedule.png'
@@ -44,15 +44,15 @@ export const M = {
 	qr: qr,
 	bar: bar,
 	measurements: measurements,
-	schedule: undefined,
-	booking: undefined,
-	partner: undefined,
-	history: undefined,
+	schedule: schedule,
+	booking: booking,
+	partner: partner,
+	history: history,
 
 	// Администратор
-	adminHome: undefined,
+	adminHome: adminHome,
 	scanner: undefined,
-	clientCard: undefined,
+	clientCard: clientCard,
 
 	// Тренер и специалист
 	trainerSchedule: undefined,

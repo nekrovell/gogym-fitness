@@ -58,11 +58,12 @@ function MobileSteps() {
 						delay={0.05}
 					>
 						<div className="border-b border-line py-10 last:border-0">
-							<div className="mx-auto max-w-[280px]">
+							<div className="mx-auto max-w-[320px]">
 								<Phone
 									src={s.src}
 									label={s.shot}
 									note={s.note}
+									caption={false}
 								/>
 							</div>
 
@@ -126,7 +127,7 @@ function StickySteps() {
 
 				<div className="relative mx-auto grid w-full max-w-page items-center gap-16 px-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)]">
 					{/* Телефон */}
-					<div className="mx-auto w-full max-w-[420px]">
+					<div className="mx-auto w-full max-w-[480px]">
 						<div className="relative aspect-[8/15]">
 							{STEPS.map((s, i) => (
 								<motion.div
@@ -144,6 +145,7 @@ function StickySteps() {
 										src={s.src}
 										label={s.shot}
 										note={s.note}
+										caption={false}
 										className="h-full"
 									/>
 								</motion.div>

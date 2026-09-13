@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { M } from '../mockups'
 import { DotBg, Glow, GridBg, LogoMark, TopEdge } from './decor'
-import { Bullet, Phone, Reveal, Section, SectionHead, Shot } from './ui'
+import { Bullet, Phone, Reveal, Section, SectionHead } from './ui'
 
 // ── Тренеры и специалисты ──
 export function Staff() {
@@ -41,7 +41,7 @@ export function Staff() {
 							<Bullet>Выгрузка в таблицу за любой период</Bullet>
 						</ul>
 
-						<div className="mt-8 grid grid-cols-2 gap-5">
+						<div className="mt-9 grid grid-cols-2 gap-6">
 							<Phone
 								src={M.trainerSchedule}
 								label="Расписание"
@@ -72,7 +72,7 @@ export function Staff() {
 							</Bullet>
 						</ul>
 
-						<div className="mt-8 grid grid-cols-2 gap-5">
+						<div className="mt-9 grid grid-cols-2 gap-6">
 							<Phone
 								src={M.staffDay}
 								label="Записи на день"
@@ -167,18 +167,17 @@ export function Money() {
 				</div>
 
 				<Reveal delay={0.1}>
-					<div className="space-y-4">
-						<Shot
+					<div className="mx-auto grid max-w-[560px] grid-cols-2 gap-6 md:gap-8">
+						<Phone
 							src={M.stats}
-							label="Статистика владельца"
-							note="общий доход и периоды"
-							className="h-[240px] md:h-[300px]"
+							label="Статистика"
+							note="доход за период"
 						/>
-						<Shot
+						<Phone
 							src={M.revenue}
-							label="Разбивка по источникам"
+							label="Источники"
 							note="доли и суммы"
-							className="h-[200px] md:h-[240px]"
+							className="mt-8"
 						/>
 					</div>
 				</Reveal>
@@ -197,17 +196,17 @@ export function Reports() {
 		>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<Reveal className="order-2 lg:order-1">
-					<div className="grid grid-cols-2 gap-5">
+					<div className="mx-auto grid max-w-[560px] grid-cols-2 gap-6 md:gap-8">
 						<Phone
 							src={M.reportSetup}
 							label="Настройка отчёта"
 							note="период и вид"
 						/>
-						<Shot
+						<Phone
 							src={M.reportPrint}
-							label="Печатная форма"
-							note="PDF или принтер"
-							className="h-full min-h-[320px]"
+							label="Готовый отчёт"
+							note="печать или PDF"
+							className="mt-8"
 						/>
 					</div>
 				</Reveal>
@@ -336,7 +335,7 @@ export function Control() {
 				</div>
 
 				<Reveal delay={0.1}>
-					<div className="mx-auto grid max-w-[540px] grid-cols-2 gap-5">
+					<div className="mx-auto grid max-w-[640px] grid-cols-2 gap-6 md:gap-8">
 						<Phone
 							src={M.auditLog}
 							label="Журнал правок"

@@ -1,6 +1,13 @@
 import { M } from '../mockups'
 import { Beam, Glow, GridBg } from './decor'
-import { Bullet, Phone, Reveal, Section, SectionHead } from './ui'
+import {
+	Bullet,
+	Phone,
+	PhoneSwitcher,
+	Reveal,
+	Section,
+	SectionHead
+} from './ui'
 
 // ── Клиент: абонемент и вход ──
 export function ClientMembership() {
@@ -8,7 +15,7 @@ export function ClientMembership() {
 		<Section>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<Reveal>
-					<div className="mx-auto grid max-w-[540px] grid-cols-2 gap-5 md:gap-6">
+					<div className="mx-auto grid max-w-[640px] grid-cols-2 gap-6 md:gap-8">
 						<Phone
 							src={M.membership}
 							label="Главный экран"
@@ -126,7 +133,7 @@ export function ClientRest() {
 			</div>
 
 			<Reveal delay={0.1}>
-				<div className="mt-12 grid grid-cols-2 gap-5 md:mt-16 md:grid-cols-4 md:gap-6">
+				<div className="mt-14 grid grid-cols-2 gap-8 md:mt-20 md:grid-cols-4 md:gap-6">
 					<Phone
 						src={M.schedule}
 						label="Расписание"
@@ -206,21 +213,30 @@ export function Admin() {
 				</div>
 
 				<Reveal className="order-1 lg:order-2">
-					<div className="mx-auto grid max-w-[620px] grid-cols-3 gap-4 md:gap-5">
-						<Phone
-							src={M.adminHome}
-							label="Смена"
-						/>
-						<Phone
-							src={M.scanner}
-							label="Сканер"
-							className="mt-8"
-						/>
-						<Phone
-							src={M.clientCard}
-							label="Клиент"
-						/>
-					</div>
+					<PhoneSwitcher
+						items={[
+							{
+								label: 'Смена',
+								note: 'продажи и посещения за день',
+								src: M.adminHome
+							},
+							{
+								label: 'Сканер',
+								note: 'отметка посещения по коду',
+								src: M.scanner
+							},
+							{
+								label: 'Клиент',
+								note: 'отметить посещение и абонемент',
+								src: M.clientCard
+							},
+							{
+								label: 'Действия',
+								note: 'что можно сделать с клиентом',
+								src: M.clientCard2
+							}
+						]}
+					/>
 				</Reveal>
 			</div>
 		</Section>

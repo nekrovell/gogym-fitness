@@ -21,8 +21,9 @@ import schedule from './assets/mockups/schedule.png'
 
 // ── Администратор ──
 import adminHome from './assets/mockups/adminHome.png'
-// import scanner from './assets/mockups/scanner.png'
+import scanner from './assets/mockups/scaner.png'
 import clientCard from './assets/mockups/clientCard.png'
+import clientCard2 from './assets/mockups/clientCard2.png'
 
 // ── Тренер и специалист ──
 // import trainerSchedule from './assets/mockups/trainer-schedule.png'
@@ -51,8 +52,9 @@ export const M = {
 
 	// Администратор
 	adminHome: adminHome,
-	scanner: undefined,
+	scanner: scanner,
 	clientCard: clientCard,
+	clientCard2: clientCard2,
 
 	// Тренер и специалист
 	trainerSchedule: undefined,

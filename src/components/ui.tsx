@@ -1,4 +1,10 @@
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
+import {
+	AnimatePresence,
+	motion,
+	useInView,
+	useMotionValue,
+	useSpring
+} from 'framer-motion'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 // ── Появление при прокрутке ──
@@ -283,17 +289,19 @@ export function Phone({
 	src,
 	label,
 	note,
-	className = ''
+	className = '',
+	caption = true
 }: {
 	src?: string
 	label: string
 	note?: string
 	className?: string
+	caption?: boolean
 }) {
 	// Готовый мокап показываем как есть — рамка не нужна
 	if (src) {
-		return (
-			<div className={`mock-glow ${className}`}>
+		const img = (
+			<div className="mock-glow">
 				<img
 					src={src}
 					alt={label}
@@ -301,6 +309,24 @@ export function Phone({
 					className="block w-full object-contain"
 				/>
 			</div>
+		)
+
+		if (!caption) return <div className={className}>{img}</div>
+
+		return (
+			<figure className={className}>
+				{img}
+				<figcaption className="mt-4 text-center">
+					<span className="block text-[13px] font-bold leading-tight text-white md:text-sm">
+						{label}
+					</span>
+					{note && (
+						<span className="mt-1 block text-[11px] leading-tight text-faint">
+							{note}
+						</span>
+					)}
+				</figcaption>
+			</figure>
 		)
 	}
 
@@ -335,12 +361,24 @@ export function Shot({
 }) {
 	if (src) {
 		return (
-			<img
-				src={src}
-				alt={label}
-				loading="lazy"
-				className={`block w-full object-contain ${className}`}
-			/>
+			<figure className={className}>
+				<img
+					src={src}
+					alt={label}
+					loading="lazy"
+					className="block w-full rounded-2xl object-contain"
+				/>
+				<figcaption className="mt-4 text-center">
+					<span className="block text-[13px] font-bold leading-tight text-white md:text-sm">
+						{label}
+					</span>
+					{note && (
+						<span className="mt-1 block text-[11px] leading-tight text-faint">
+							{note}
+						</span>
+					)}
+				</figcaption>
+			</figure>
 		)
 	}
 
@@ -356,6 +394,116 @@ export function Shot({
 					{label}
 				</p>
 				{note && <p className="mt-1.5 text-[11px] text-faint">{note}</p>}
+			</div>
+		</div>
+	)
+}
+
+// ── Переключатель экранов ──
+// Один крупный мокап и кнопки под ним. Пока не трогали — листает сам
+export function PhoneSwitcher({
+	items,
+	className = ''
+}: {
+	items: { label: string; note?: string; src?: string }[]
+	className?: string
+}) {
+	const [active, setActive] = useState(0)
+	const [auto, setAuto] = useState(true)
+	const ref = useRef<HTMLDivElement>(null)
+	const inView = useInView(ref, { amount: 0.35 })
+
+	useEffect(() => {
+		if (!auto || !inView) return
+		const id = setInterval(() => setActive(i => (i + 1) % items.length), 4200)
+		return () => clearInterval(id)
+	}, [auto, inView, items.length])
+
+	const pick = (i: number) => {
+		setAuto(false)
+		setActive(i)
+	}
+
+	const current = items[active]
+
+	return (
+		<div
+			ref={ref}
+			className={className}
+		>
+			{/* Экран */}
+			<div className="mx-auto w-full max-w-[300px] md:max-w-[340px]">
+				<div className="relative aspect-[8/15]">
+					<AnimatePresence mode="wait">
+						<motion.div
+							key={active}
+							initial={{ opacity: 0, scale: 0.96, y: 14 }}
+							animate={{ opacity: 1, scale: 1, y: 0 }}
+							exit={{ opacity: 0, scale: 0.97, y: -10 }}
+							transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+							className="absolute inset-0 flex items-center"
+						>
+							<Phone
+								src={current.src}
+								label={current.label}
+								note={current.note}
+								caption={false}
+								className="w-full"
+							/>
+						</motion.div>
+					</AnimatePresence>
+				</div>
+			</div>
+
+			{/* Подпись */}
+			<div className="mt-5 min-h-[3rem] text-center">
+				<AnimatePresence mode="wait">
+					<motion.div
+						key={active}
+						initial={{ opacity: 0, y: 8 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -8 }}
+						transition={{ duration: 0.28 }}
+					>
+						<p className="text-base font-bold leading-tight text-white">
+							{current.label}
+						</p>
+						{current.note && (
+							<p className="mt-1 text-xs text-faint">{current.note}</p>
+						)}
+					</motion.div>
+				</AnimatePresence>
+			</div>
+
+			{/* Кнопки */}
+			<div className="mt-6 flex flex-wrap justify-center gap-2">
+				{items.map((it, i) => (
+					<button
+						key={it.label + i}
+						type="button"
+						onClick={() => pick(i)}
+						aria-pressed={active === i}
+						className={`relative overflow-hidden rounded-full px-4 py-2 text-xs font-bold transition md:text-[13px] ${
+							active === i
+								? 'bg-lime text-ink'
+								: 'bg-surface2 text-muted hover:text-white'
+						}`}
+					>
+						{it.label}
+
+						{/* Полоска обратного отсчёта */}
+						{active === i && auto && (
+							<motion.span
+								key={`bar-${i}`}
+								className="absolute inset-x-0 bottom-0 h-[2px] bg-ink/25"
+								initial={{ scaleX: 0 }}
+								animate={{ scaleX: 1 }}
+								transition={{ duration: 4.2, ease: 'linear' }}
+								style={{ originX: 0 }}
+							/>
+						)}
+					</button>
+				))}
 			</div>
 		</div>
 	)

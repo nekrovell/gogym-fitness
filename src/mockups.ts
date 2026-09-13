@@ -21,15 +21,15 @@ import schedule from './assets/mockups/schedule.png'
 
 // ── Администратор ──
 import adminHome from './assets/mockups/adminHome.png'
-import scanner from './assets/mockups/scaner.png'
 import clientCard from './assets/mockups/clientCard.png'
 import clientCard2 from './assets/mockups/clientCard2.png'
+import scanner from './assets/mockups/scaner.png'
 
 // ── Тренер и специалист ──
-// import trainerSchedule from './assets/mockups/trainer-schedule.png'
-// import trainerClient from './assets/mockups/trainer-client.png'
+import trainerClient from './assets/mockups/trainer-client.png'
+import trainerSchedule from './assets/mockups/trainer-schedule.png'
 // import staffDay from './assets/mockups/staff-day.png'
-// import staffEarnings from './assets/mockups/staff-earnings.png'
+import staffEarnings from './assets/mockups/staff-earnings.png'
 
 // ── Владелец клуба ──
 // import stats from './assets/mockups/stats.png'
@@ -57,10 +57,10 @@ export const M = {
 	clientCard2: clientCard2,
 
 	// Тренер и специалист
-	trainerSchedule: undefined,
-	trainerClient: undefined,
+	trainerSchedule: trainerSchedule,
+	trainerClient: trainerClient,
 	staffDay: undefined,
-	staffEarnings: undefined,
+	staffEarnings: staffEarnings,
 
 	// Владелец клуба
 	stats: undefined,

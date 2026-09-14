@@ -121,67 +121,75 @@ export function Money() {
 				</>
 			}
 		>
-			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
-				<div>
-					<SectionHead
-						kicker="Владелец клуба"
-						title="Видно, откуда пришли деньги"
-						lead="Не общая сумма в кассе, а разбивка по источникам за любой период."
-					/>
+			<SectionHead
+				kicker="Владелец клуба"
+				title="Видно, откуда пришли деньги"
+				lead="Не общая сумма в кассе, а разбивка по источникам за любой период."
+			/>
 
-					<Reveal delay={0.1}>
-						<div className="mt-9 space-y-4 md:mt-11">
-							{SOURCES.map(s => (
-								<div
-									key={s.t}
-									className="flex items-center gap-5"
-								>
-									<span className="w-[52%] shrink-0 text-[15px] text-white/90">
-										{s.t}
-									</span>
-									<span className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface2">
-										<motion.span
-											className="block h-full rounded-full bg-lime"
-											initial={{ width: 0 }}
-											whileInView={{ width: `${s.w}%` }}
-											viewport={{ once: true, margin: '-80px' }}
-											transition={{
-												duration: 1,
-												delay: 0.15,
-												ease: [0.22, 1, 0.36, 1]
-											}}
-										/>
-									</span>
-								</div>
-							))}
-						</div>
-					</Reveal>
-
-					<Reveal delay={0.2}>
-						<ul className="mt-9 space-y-4 md:mt-11">
-							<Bullet>День, неделя, месяц, три месяца — календарные</Bullet>
-							<Bullet>Наличные и безналичные считаются отдельно</Bullet>
-							<Bullet>Топ проданных позиций и средний чек</Bullet>
-						</ul>
-					</Reveal>
-				</div>
-
+			<div className="mt-12 grid gap-12 md:mt-16 lg:grid-cols-2 lg:gap-20">
+				{/* Доли источников */}
 				<Reveal delay={0.1}>
-					<div className="mx-auto grid max-w-[560px] grid-cols-2 gap-6 md:gap-8">
-						<Phone
-							src={M.stats}
-							label="Статистика"
-							note="доход за период"
-						/>
-						<Phone
-							src={M.revenue}
-							label="Источники"
-							note="доли и суммы"
-							className="mt-8"
-						/>
+					<div className="space-y-4">
+						{SOURCES.map(s => (
+							<div
+								key={s.t}
+								className="flex items-center gap-5"
+							>
+								<span className="w-[52%] shrink-0 text-[15px] text-white/90">
+									{s.t}
+								</span>
+								<span className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface2">
+									<motion.span
+										className="block h-full rounded-full bg-lime"
+										initial={{ width: 0 }}
+										whileInView={{ width: `${s.w}%` }}
+										viewport={{ once: true, margin: '-80px' }}
+										transition={{
+											duration: 1,
+											delay: 0.15,
+											ease: [0.22, 1, 0.36, 1]
+										}}
+									/>
+								</span>
+							</div>
+						))}
 					</div>
 				</Reveal>
+
+				{/* Что ещё видно */}
+				<Reveal delay={0.2}>
+					<ul className="space-y-4">
+						<Bullet>День, неделя, месяц, три месяца — календарные</Bullet>
+						<Bullet>Наличные и безналичные считаются отдельно</Bullet>
+						<Bullet>Видно, в какие часы приходит больше всего людей</Bullet>
+						<Bullet>Топ проданных позиций и средний чек</Bullet>
+					</ul>
+				</Reveal>
 			</div>
+
+			{/* Экраны */}
+			<Reveal delay={0.1}>
+				<div className="mt-16 grid gap-8 sm:grid-cols-2 md:mt-20 lg:grid-cols-3 lg:gap-10">
+					<Phone
+						src={M.stats}
+						label="Сумма и источники"
+						note="сколько заработали и откуда"
+					/>
+					<Phone
+						src={M.revenue}
+						label="Выручка и посещения"
+						note="как менялись день ото дня"
+						className="lg:mt-10"
+					/>
+					<Phone
+						src={M.traffic}
+						label="Часы и оплата"
+						note="когда приходят и чем платят"
+						className="sm:col-span-2 sm:mx-auto sm:max-w-[calc(50%-1rem)] lg:col-span-1 lg:mx-0 lg:max-w-none"
+					/>
+				</div>
+			</Reveal>
 		</Section>
 	)
 }

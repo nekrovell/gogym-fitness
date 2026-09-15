@@ -32,13 +32,13 @@ import trainerClient from './assets/mockups/trainer-client.png'
 import trainerSchedule from './assets/mockups/trainer-schedule.png'
 
 // ── Владелец клуба ──
+import auditLog from './assets/mockups/audit-log.png'
+import feedback from './assets/mockups/feedback.png'
 import reportPrint from './assets/mockups/report-print.png'
 import reportSetup from './assets/mockups/report-setup.png'
 import revenue from './assets/mockups/revenue.png'
 import stats from './assets/mockups/stats.png'
 import traffic from './assets/mockups/traffic.png'
-// import auditLog from './assets/mockups/audit-log.png'
-// import feedback from './assets/mockups/feedback.png'
 
 export const M = {
 	// Клиент
@@ -69,6 +69,6 @@ export const M = {
 	traffic: traffic,
 	reportSetup: reportSetup,
 	reportPrint: reportPrint,
-	auditLog: undefined,
-	feedback: undefined
+	auditLog: auditLog,
+	feedback: feedback
 } as Record<string, string | undefined>

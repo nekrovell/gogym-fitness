@@ -1,44 +1,44 @@
 // src/mockups.ts
 // Все скриншоты приложения в одном месте.
 //
-// Как добавить свой:
-//   1. Положите файл в src/assets/mockups/
-//   2. Раскомментируйте нужный импорт ниже
-//   3. Замените undefined на имя импорта
+// Картинки лежат в src/assets/mockups/ в формате webp — их готовит
+// scripts/mockups.mjs из исходных png (ширина 800, качество 78).
+// Добавили новый скриншот — положите png рядом, прогоните скрипт
+// и допишите импорт сюда.
 //
-// Пока стоит undefined — на странице показывается пунктирная рамка
+// Если поставить undefined — на странице покажется пунктирная рамка
 // с подписью, так что незаполненные места сразу видно.
 
 // ── Клиент ──
-import bar from './assets/mockups/bar.png'
-import booking from './assets/mockups/booking.png'
-import history from './assets/mockups/history.png'
-import measurements from './assets/mockups/measurements.png'
-import membership from './assets/mockups/membership.png'
-import partner from './assets/mockups/partner.png'
-import qr from './assets/mockups/qr.png'
-import schedule from './assets/mockups/schedule.png'
+import bar from './assets/mockups/bar.webp'
+import booking from './assets/mockups/booking.webp'
+import history from './assets/mockups/history.webp'
+import measurements from './assets/mockups/measurements.webp'
+import membership from './assets/mockups/membership.webp'
+import partner from './assets/mockups/partner.webp'
+import qr from './assets/mockups/qr.webp'
+import schedule from './assets/mockups/schedule.webp'
 
 // ── Администратор ──
-import adminHome from './assets/mockups/adminHome.png'
-import clientCard from './assets/mockups/clientCard.png'
-import clientCard2 from './assets/mockups/clientCard2.png'
-import scanner from './assets/mockups/scaner.png'
+import adminHome from './assets/mockups/adminHome.webp'
+import clientCard from './assets/mockups/clientCard.webp'
+import clientCard2 from './assets/mockups/clientCard2.webp'
+import scanner from './assets/mockups/scaner.webp'
 
 // ── Тренер и специалист ──
-import staffDay from './assets/mockups/staff-day.png'
-import staffEarnings from './assets/mockups/staff-earnings.png'
-import trainerClient from './assets/mockups/trainer-client.png'
-import trainerSchedule from './assets/mockups/trainer-schedule.png'
+import staffDay from './assets/mockups/staff-day.webp'
+import staffEarnings from './assets/mockups/staff-earnings.webp'
+import trainerClient from './assets/mockups/trainer-client.webp'
+import trainerSchedule from './assets/mockups/trainer-schedule.webp'
 
 // ── Владелец клуба ──
-import auditLog from './assets/mockups/audit-log.png'
-import feedback from './assets/mockups/feedback.png'
-import reportPrint from './assets/mockups/report-print.png'
-import reportSetup from './assets/mockups/report-setup.png'
-import revenue from './assets/mockups/revenue.png'
-import stats from './assets/mockups/stats.png'
-import traffic from './assets/mockups/traffic.png'
+import auditLog from './assets/mockups/audit-log.webp'
+import feedback from './assets/mockups/feedback.webp'
+import reportPrint from './assets/mockups/report-print.webp'
+import reportSetup from './assets/mockups/report-setup.webp'
+import revenue from './assets/mockups/revenue.webp'
+import stats from './assets/mockups/stats.webp'
+import traffic from './assets/mockups/traffic.webp'
 
 export const M = {
 	// Клиент

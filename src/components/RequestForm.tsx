@@ -4,7 +4,7 @@
 // в приложении в разделе заявок.
 import { Check, Loader2 } from 'lucide-react'
 import { useRef, useState, type FormEvent } from 'react'
-import { supabase } from '../lib/supabase'
+import { getSupabase, supabaseReady } from '../lib/supabase'
 
 type Status = 'idle' | 'sending' | 'ok' | 'error'
 type Contact = 'whatsapp' | 'telegram'
@@ -178,6 +178,12 @@ export function RequestForm() {
 			return
 		}
 
+		// Ключей нет — не делаем вид, что отправили
+		if (!supabaseReady) {
+			setStatus('error')
+			return
+		}
+
 		setStatus('sending')
 
 		const row = {
@@ -190,7 +196,15 @@ export function RequestForm() {
 			comment: form.comment.trim() || null
 		}
 
-		const { error } = await supabase.from('gym_requests').insert(row)
+		let client
+		try {
+			client = getSupabase()
+		} catch {
+			setStatus('error')
+			return
+		}
+
+		const { error } = await client.from('gym_requests').insert(row)
 
 		if (error) {
 			setStatus('error')
@@ -200,7 +214,7 @@ export function RequestForm() {
 		// Уведомление владельцу платформы.
 		// Не дойдёт — заявка всё равно уже сохранена, поэтому ошибку глушим
 		try {
-			await supabase.functions.invoke('notify-gym-request', {
+			await client.functions.invoke('notify-gym-request', {
 				body: {
 					gymName: row.gym_name,
 					city: row.city,

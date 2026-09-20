@@ -1,3 +1,4 @@
+import { Access, Notifications } from './components/Extra'
 import { Faq, Footer, Start, Why } from './components/Faq'
 import { Admin, ClientRest } from './components/Features'
 import { Header } from './components/Header'
@@ -25,12 +26,18 @@ export default function App() {
 				<Admin />
 				<Staff />
 
+				{/* Что приложение делает без участия людей */}
+				<Notifications />
+
 				<Divider />
 
 				<Money />
 				<Reports />
 				<Setup />
 				<Control />
+
+				{/* Вход и разделение данных — перед разговором о деньгах */}
+				<Access />
 
 				<Divider />
 

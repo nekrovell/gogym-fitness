@@ -1,6 +1,7 @@
 import { Minus, Plus } from 'lucide-react'
 import { useState } from 'react'
 import logo from '../assets/logo-dark-small.png'
+import { RequestForm } from './RequestForm'
 import { Beam, DotBg, Glow, TopEdge } from './decor'
 import { Reveal, Section, SectionHead } from './ui'
 
@@ -187,7 +188,7 @@ export function Faq() {
 
 // ── Как начать ──
 const STEPS = [
-	{ t: 'Заявка', d: 'Пишете нам или оставляете заявку в приложении' },
+	{ t: 'Заявка', d: 'Оставляете заявку здесь или пишете нам' },
 	{ t: 'Разговор', d: 'Созваниваемся, смотрим, подходит ли вам' },
 	{ t: 'Клуб готов', d: 'Создаём зал и выдаём доступ владельцу' },
 	{ t: 'Настройка', d: 'Заводите каталоги, цены и персонал под себя' }
@@ -205,74 +206,88 @@ export function Start() {
 				/>
 			}
 		>
-			<div className="relative overflow-hidden rounded-3xl bg-lime p-8 md:p-14">
-				{/* Узор поверх зелёного */}
-				<div
-					aria-hidden
-					className="pointer-events-none absolute inset-0 opacity-[0.07]"
-					style={{
-						backgroundImage:
-							'linear-gradient(rgba(0,0,0,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.6) 1px, transparent 1px)',
-						backgroundSize: '46px 46px'
-					}}
-				/>
-				<img
-					src={logo}
-					alt=""
-					aria-hidden
-					className="pointer-events-none absolute -bottom-10 -right-10 w-[340px] select-none opacity-[0.07] md:w-[460px]"
-				/>
-				<Reveal className="relative">
-					<h2 className="h2 max-w-[18ch] text-ink">
-						Попробуйте месяц на своём клубе
-					</h2>
-					<p className="mt-5 max-w-[50ch] text-base leading-relaxed text-ink/70 md:text-lg">
-						Без карты и предоплаты. Если не подойдёт — просто перестанете
-						пользоваться, данные никуда не денутся.
-					</p>
-				</Reveal>
+			<div className="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-8">
+				{/* Зелёная карточка — только приглашение и шаги */}
+				<div className="relative overflow-hidden rounded-3xl bg-lime p-8 md:p-10">
+					{/* Узор поверх зелёного */}
+					<div
+						aria-hidden
+						className="pointer-events-none absolute inset-0 opacity-[0.07]"
+						style={{
+							backgroundImage:
+								'linear-gradient(rgba(0,0,0,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.6) 1px, transparent 1px)',
+							backgroundSize: '46px 46px'
+						}}
+					/>
+					<img
+						src={logo}
+						alt=""
+						aria-hidden
+						className="pointer-events-none absolute -bottom-12 -right-12 w-[320px] select-none opacity-[0.07] md:w-[400px]"
+					/>
 
-				<div className="relative mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-14">
-					{STEPS.map((s, i) => (
-						<Reveal
-							key={s.t}
-							delay={i * 0.08}
-						>
-							<div className="border-t border-ink/20 pt-5">
-								<span className="text-4xl font-extrabold tracking-tight text-ink/25 md:text-5xl">
-									{String(i + 1).padStart(2, '0')}
-								</span>
-								<h3 className="mt-3 text-lg font-bold tracking-tight text-ink">
-									{s.t}
-								</h3>
-								<p className="mt-1.5 text-sm leading-relaxed text-ink/65">
-									{s.d}
-								</p>
+					<Reveal className="relative">
+						<h2 className="h2 max-w-[16ch] text-ink">
+							Попробуйте месяц на своём клубе
+						</h2>
+						<p className="mt-5 max-w-[42ch] text-base leading-relaxed text-ink/70">
+							Без карты и предоплаты. Если не подойдёт — просто перестанете
+							пользоваться, данные никуда не денутся.
+						</p>
+					</Reveal>
+
+					<div className="relative mt-9 grid gap-6 sm:grid-cols-2">
+						{STEPS.map((s, i) => (
+							<Reveal
+								key={s.t}
+								delay={i * 0.08}
+							>
+								<div className="border-t border-ink/20 pt-4">
+									<span className="text-3xl font-extrabold tracking-tight text-ink/25 md:text-4xl">
+										{String(i + 1).padStart(2, '0')}
+									</span>
+									<h3 className="mt-2 text-base font-bold tracking-tight text-ink">
+										{s.t}
+									</h3>
+									<p className="mt-1.5 text-sm leading-relaxed text-ink/65">
+										{s.d}
+									</p>
+								</div>
+							</Reveal>
+						))}
+					</div>
+
+					<Reveal
+						delay={0.2}
+						className="relative"
+					>
+						<div className="mt-9 border-t border-ink/20 pt-7">
+							<p className="text-[12px] font-bold uppercase tracking-[0.16em] text-ink/50">
+								Или напишите напрямую
+							</p>
+							<div className="mt-4 flex flex-col gap-3 sm:flex-row">
+								<a
+									href="https://wa.me/77074108415"
+									target="_blank"
+									rel="noreferrer"
+									className="inline-flex items-center justify-center rounded-full bg-ink px-7 py-3.5 text-[15px] font-bold text-white transition hover:bg-ink/85"
+								>
+									WhatsApp
+								</a>
+								<a
+									href="mailto:gogym.fitness.kz@gmail.com"
+									className="inline-flex items-center justify-center rounded-full border border-ink/25 px-7 py-3.5 text-[15px] font-bold text-ink transition hover:border-ink/60"
+								>
+									Почта
+								</a>
 							</div>
-						</Reveal>
-					))}
+						</div>
+					</Reveal>
 				</div>
 
-				<Reveal
-					delay={0.2}
-					className="relative"
-				>
-					<div className="mt-11 flex flex-col gap-3 sm:flex-row md:mt-14">
-						<a
-							href="https://wa.me/77074108415"
-							target="_blank"
-							rel="noreferrer"
-							className="inline-flex items-center justify-center rounded-full bg-ink px-8 py-4 text-[15px] font-bold text-white transition hover:bg-ink/85"
-						>
-							Написать в WhatsApp
-						</a>
-						<a
-							href="mailto:hello@gogym.club"
-							className="inline-flex items-center justify-center rounded-full border border-ink/25 px-8 py-4 text-[15px] font-bold text-ink transition hover:border-ink/60"
-						>
-							Написать на почту
-						</a>
-					</div>
+				{/* Заявка уходит прямо в приложение */}
+				<Reveal delay={0.12}>
+					<RequestForm />
 				</Reveal>
 			</div>
 		</Section>
@@ -325,16 +340,16 @@ export function Footer() {
 							+7 707 410 84 15
 						</a>
 						<a
-							href="mailto:hello@gogym.club"
+							href="mailto:gogym.fitness.kz@gmail.com"
 							className="mt-1 block text-muted transition hover:text-white"
 						>
-							hello@gogym.club
+							gogym.fitness.kz@gmail.com
 						</a>
 					</div>
 				</div>
 
 				<p className="mt-12 border-t border-line pt-6 text-xs text-faint md:mt-16">
-					© {new Date().getFullYear()} Go Gym Fitness
+					© {new Date().getFullYear()} GoGym Fitness
 				</p>
 			</div>
 		</footer>

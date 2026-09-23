@@ -64,6 +64,7 @@ export function Why() {
 							<h3 className="text-xl font-bold tracking-tight text-white md:text-2xl">
 								{w.t}
 							</h3>
+
 							<p className="mt-3 max-w-[48ch] text-[15px] leading-relaxed text-muted">
 								{w.d}
 							</p>
@@ -140,6 +141,7 @@ export function Faq() {
 			<div className="mt-12 md:mt-14">
 				{FAQ.map((f, i) => {
 					const isOpen = open === i
+
 					return (
 						<Reveal
 							key={f.q}
@@ -155,6 +157,7 @@ export function Faq() {
 									<span className="flex-1 text-lg font-bold tracking-tight text-white md:text-xl">
 										{f.q}
 									</span>
+
 									<span
 										className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full transition ${
 											isOpen ? 'bg-lime text-ink' : 'bg-surface2 text-muted'
@@ -188,10 +191,22 @@ export function Faq() {
 
 // ── Как начать ──
 const STEPS = [
-	{ t: 'Заявка', d: 'Оставляете заявку здесь или пишете нам' },
-	{ t: 'Разговор', d: 'Созваниваемся, смотрим, подходит ли вам' },
-	{ t: 'Клуб готов', d: 'Создаём зал и выдаём доступ владельцу' },
-	{ t: 'Настройка', d: 'Заводите каталоги, цены и персонал под себя' }
+	{
+		t: 'Заявка',
+		d: 'Оставляете заявку здесь или пишете нам'
+	},
+	{
+		t: 'Разговор',
+		d: 'Созваниваемся, смотрим, подходит ли вам'
+	},
+	{
+		t: 'Клуб готов',
+		d: 'Создаём зал и выдаём доступ владельцу'
+	},
+	{
+		t: 'Настройка',
+		d: 'Заводите каталоги, цены и персонал под себя'
+	}
 ]
 
 export function Start() {
@@ -219,6 +234,7 @@ export function Start() {
 							backgroundSize: '46px 46px'
 						}}
 					/>
+
 					<img
 						src={logo}
 						alt=""
@@ -230,6 +246,7 @@ export function Start() {
 						<h2 className="h2 max-w-[16ch] text-ink">
 							Попробуйте месяц на своём клубе
 						</h2>
+
 						<p className="mt-5 max-w-[42ch] text-base leading-relaxed text-ink/70">
 							Без карты и предоплаты. Если не подойдёт — просто перестанете
 							пользоваться, данные никуда не денутся.
@@ -246,9 +263,11 @@ export function Start() {
 									<span className="text-3xl font-extrabold tracking-tight text-ink/25 md:text-4xl">
 										{String(i + 1).padStart(2, '0')}
 									</span>
+
 									<h3 className="mt-2 text-base font-bold tracking-tight text-ink">
 										{s.t}
 									</h3>
+
 									<p className="mt-1.5 text-sm leading-relaxed text-ink/65">
 										{s.d}
 									</p>
@@ -265,6 +284,7 @@ export function Start() {
 							<p className="text-[12px] font-bold uppercase tracking-[0.16em] text-ink/50">
 								Или напишите напрямую
 							</p>
+
 							<div className="mt-4 flex flex-col gap-3 sm:flex-row">
 								<a
 									href="https://wa.me/77074108415"
@@ -274,6 +294,7 @@ export function Start() {
 								>
 									WhatsApp
 								</a>
+
 								<a
 									href="mailto:gogym.fitness.kz@gmail.com"
 									className="inline-flex items-center justify-center rounded-full border border-ink/25 px-7 py-3.5 text-[15px] font-bold text-ink transition hover:border-ink/60"
@@ -303,9 +324,10 @@ export function Footer() {
 					<div>
 						<img
 							src={logo}
-							alt="Go Gym Fitness"
+							alt="GoGym Fitness"
 							className="h-9 w-auto"
 						/>
+
 						<p className="mt-5 max-w-[36ch] text-sm leading-relaxed text-muted">
 							Система управления фитнес-клубом. Работает на iPhone и Android.
 						</p>
@@ -317,7 +339,8 @@ export function Footer() {
 							['Роли', '#roles'],
 							['Тарифы', '#pricing'],
 							['Вопросы', '#faq'],
-							['Подключить', '#start']
+							['Подключить', '#start'],
+							['Конфиденциальность', '/privacy']
 						].map(([label, href]) => (
 							<a
 								key={href}
@@ -331,6 +354,7 @@ export function Footer() {
 
 					<div className="text-sm">
 						<p className="text-faint">Связаться</p>
+
 						<a
 							href="https://wa.me/77074108415"
 							target="_blank"
@@ -339,6 +363,7 @@ export function Footer() {
 						>
 							+7 707 410 84 15
 						</a>
+
 						<a
 							href="mailto:gogym.fitness.kz@gmail.com"
 							className="mt-1 block text-muted transition hover:text-white"

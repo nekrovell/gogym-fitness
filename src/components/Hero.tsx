@@ -203,7 +203,7 @@ export function Hero() {
 					}}
 				>
 					<StoreButtons
-						label="Для клиентов клуба"
+						label="Скачать приложение"
 						className="mt-8 md:mt-10"
 					/>
 				</motion.div>

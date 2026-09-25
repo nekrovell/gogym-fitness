@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { StoreButtons } from './StoreButtons'
 import { Marquee, MaskLines } from './ui'
 
 const FACTS = [
@@ -124,12 +125,25 @@ export function Hero() {
 					>
 						Подключить зал
 					</a>
+
 					<a
 						href="#features"
 						className="btn-ghost w-full sm:w-auto"
 					>
 						Что внутри
 					</a>
+				</motion.div>
+
+				{/* Для клиентов — скачать приложение. Без ссылок блок не показывается */}
+				<motion.div
+					initial={{ opacity: 0, y: 18 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
+				>
+					<StoreButtons
+						label="Для клиентов клуба"
+						className="mt-8 md:mt-10"
+					/>
 				</motion.div>
 
 				<motion.div

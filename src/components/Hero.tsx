@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { StoreButtons } from './StoreButtons'
 import { Marquee, MaskLines } from './ui'
 
@@ -23,13 +24,40 @@ const TICKER = [
 	'Статистика'
 ]
 
+// Широкий экран (как брейкпоинт md в Tailwind)
+const DESKTOP_QUERY = '(min-width: 768px)'
+
+function useIsDesktop() {
+	const [isDesktop, setIsDesktop] = useState(
+		() =>
+			typeof window !== 'undefined' && window.matchMedia(DESKTOP_QUERY).matches
+	)
+
+	useEffect(() => {
+		const mq = window.matchMedia(DESKTOP_QUERY)
+
+		const onChange = () => setIsDesktop(mq.matches)
+
+		mq.addEventListener('change', onChange)
+
+		return () => mq.removeEventListener('change', onChange)
+	}, [])
+
+	return isDesktop
+}
+
 export function Hero() {
 	const { scrollY } = useScroll()
+	const isDesktop = useIsDesktop()
 
 	// Заголовок медленно уезжает и растворяется при прокрутке
 	const y = useTransform(scrollY, [0, 600], [0, 90])
 	const opacity = useTransform(scrollY, [0, 480], [1, 0])
 	const glowScale = useTransform(scrollY, [0, 600], [1, 1.35])
+
+	// На телефоне блок выше экрана: растворение спрятало бы кнопки магазинов раньше,
+	// чем до них долистают. Поэтому эффект только на широком экране
+	const parallax = isDesktop ? { y, opacity } : undefined
 
 	return (
 		<section
@@ -65,15 +93,21 @@ export function Hero() {
 			/>
 
 			<motion.div
-				style={{ y, opacity }}
+				style={parallax}
 				className="relative mx-auto max-w-page px-5 pb-16 pt-16 text-center md:px-8 md:pb-20 md:pt-24"
 			>
 				<h1 className="display">
 					<MaskLines
 						delay={0.15}
 						lines={[
-							{ text: 'Весь клуб — с телефона', className: 'text-lime-soft' },
-							{ text: 'Ни журналов, ни компьютера', className: 'text-white' }
+							{
+								text: 'Весь клуб — с телефона',
+								className: 'text-lime-soft'
+							},
+							{
+								text: 'Ни журналов, ни компьютера',
+								className: 'text-white'
+							}
 						]}
 					/>
 				</h1>
@@ -81,7 +115,11 @@ export function Hero() {
 				<motion.p
 					initial={{ opacity: 0, y: 18 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+					transition={{
+						duration: 0.7,
+						delay: 0.55,
+						ease: [0.22, 1, 0.36, 1]
+					}}
 					className="mx-auto mt-9 max-w-[48ch] text-lg font-semibold leading-snug text-muted md:mt-11 md:text-[26px]"
 				>
 					Продать абонемент, отметить приход, открыть счёт в баре, записать на
@@ -94,7 +132,12 @@ export function Hero() {
 					animate="show"
 					variants={{
 						hidden: {},
-						show: { transition: { staggerChildren: 0.07, delayChildren: 0.7 } }
+						show: {
+							transition: {
+								staggerChildren: 0.07,
+								delayChildren: 0.7
+							}
+						}
 					}}
 					className="mt-10 flex flex-wrap justify-center gap-2.5 md:mt-12 md:gap-3"
 				>
@@ -102,10 +145,21 @@ export function Hero() {
 						<motion.li
 							key={f}
 							variants={{
-								hidden: { opacity: 0, y: 14, scale: 0.94 },
-								show: { opacity: 1, y: 0, scale: 1 }
+								hidden: {
+									opacity: 0,
+									y: 14,
+									scale: 0.94
+								},
+								show: {
+									opacity: 1,
+									y: 0,
+									scale: 1
+								}
 							}}
-							transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+							transition={{
+								duration: 0.5,
+								ease: [0.22, 1, 0.36, 1]
+							}}
 							className="pill"
 						>
 							{f}
@@ -116,7 +170,11 @@ export function Hero() {
 				<motion.div
 					initial={{ opacity: 0, y: 18 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+					transition={{
+						duration: 0.7,
+						delay: 1,
+						ease: [0.22, 1, 0.36, 1]
+					}}
 					className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-14"
 				>
 					<a
@@ -138,7 +196,11 @@ export function Hero() {
 				<motion.div
 					initial={{ opacity: 0, y: 18 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.7, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
+					transition={{
+						duration: 0.7,
+						delay: 1.15,
+						ease: [0.22, 1, 0.36, 1]
+					}}
 				>
 					<StoreButtons
 						label="Для клиентов клуба"
@@ -149,7 +211,10 @@ export function Hero() {
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
-					transition={{ delay: 1.4, duration: 0.8 }}
+					transition={{
+						delay: 1.4,
+						duration: 0.8
+					}}
 					className="mt-14 flex justify-center md:mt-16"
 				>
 					<ChevronDown

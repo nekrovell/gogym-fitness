@@ -1,29 +1,22 @@
 // src/components/StoreButtons.tsx
+// Кнопки скачивания из App Store и Google Play (официальные значки из public/badges)
 
-// Кнопки скачивания из App Store и Google Play
-// Официальные значки находятся в public/badges
-
-// Ссылки на страницы приложений
-// Пока пусто — кнопка не показывается
+// Ссылки на страницы приложения. Пока пусто — кнопка не показывается
 const APP_STORE_URL = 'https://apps.apple.com/us/app/gogym-fitness/id6815078905'
 
-const GOOGLE_PLAY_URL = ''
+const GOOGLE_PLAY_URL =
+	'https://play.google.com/store/apps/details?id=kz.gogym.fitness'
 
 const STORES = [
 	{
 		url: APP_STORE_URL,
 		src: '/badges/app-store.svg',
-		alt: 'Загрузите в App Store',
-		// У значка Apple нет внутренних полей
-		height: 'h-[44px]'
+		alt: 'Загрузите в App Store'
 	},
 	{
 		url: GOOGLE_PLAY_URL,
 		src: '/badges/google-play.png',
-		alt: 'Доступно в Google Play',
-		// У значка Google есть прозрачные поля по краям,
-		// поэтому он выше
-		height: 'h-[64px] -my-[10px]'
+		alt: 'Доступно в Google Play'
 	}
 ]
 
@@ -34,8 +27,7 @@ type Props = {
 
 export function StoreButtons({ label, className = '' }: Props) {
 	// Показываем только магазины, где ссылка уже есть
-	const ready = STORES.filter(store => store.url)
-
+	const ready = STORES.filter(s => s.url)
 	if (ready.length === 0) return null
 
 	return (
@@ -47,18 +39,19 @@ export function StoreButtons({ label, className = '' }: Props) {
 			)}
 
 			<div className="flex flex-wrap items-center justify-center gap-3">
-				{ready.map(store => (
+				{ready.map(s => (
 					<a
-						key={store.src}
-						href={store.url}
+						key={s.src}
+						href={s.url}
 						target="_blank"
 						rel="noreferrer"
 						className="transition-opacity hover:opacity-80"
 					>
+						{/* Одинаковая высота у обоих значков, ширина по пропорциям */}
 						<img
-							src={store.src}
-							alt={store.alt}
-							className={`${store.height} w-auto`}
+							src={s.src}
+							alt={s.alt}
+							className="h-11 w-auto md:h-12"
 							loading="eager"
 						/>
 					</a>

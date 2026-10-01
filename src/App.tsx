@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { ClubPage, Promo } from './components/Club'
 import { Access, Notifications } from './components/Extra'
 import { Faq, Footer, Start, Why } from './components/Faq'
 import { Admin, ClientRest } from './components/Features'
@@ -59,6 +60,11 @@ export default function App() {
 				<Money />
 				<Reports />
 				<Setup />
+
+				{/* Новое: витрина клуба и акции */}
+				<ClubPage />
+				<Promo />
+
 				<Control />
 
 				{/* Вход и разделение данных — перед разговором о деньгах */}

@@ -5,6 +5,7 @@ import logo from '../assets/logo-dark-small.png'
 const NAV = [
 	{ label: 'Возможности', href: '#features' },
 	{ label: 'Роли', href: '#roles' },
+	{ label: 'Новое', href: '#club' },
 	{ label: 'Тарифы', href: '#pricing' },
 	{ label: 'Вопросы', href: '#faq' }
 ]

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { StoreButtons } from './StoreButtons'
 import { Marquee, MaskLines } from './ui'
@@ -19,6 +19,8 @@ const TICKER = [
 	'Бар',
 	'Услуги',
 	'Пакеты',
+	'Страница клуба',
+	'Акции',
 	'Отчёты',
 	'Склад',
 	'Статистика'
@@ -96,6 +98,25 @@ export function Hero() {
 				style={parallax}
 				className="relative mx-auto max-w-page px-5 pb-16 pt-16 text-center md:px-8 md:pb-20 md:pt-24"
 			>
+				{/* Что нового в приложении */}
+				<motion.a
+					href="#club"
+					initial={{ opacity: 0, y: -10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+					className="group mb-9 inline-flex items-center gap-2.5 rounded-full border border-lime/35 bg-surface/70 py-1.5 pl-1.5 pr-4 text-[13px] font-semibold text-white/90 backdrop-blur transition hover:border-lime/70 md:mb-11"
+				>
+					<span className="rounded-full bg-lime px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink">
+						Новое
+					</span>
+					Страница клуба и акции
+					<ArrowRight
+						size={15}
+						className="text-lime transition-transform group-hover:translate-x-0.5"
+						aria-hidden
+					/>
+				</motion.a>
+
 				<h1 className="display">
 					<MaskLines
 						delay={0.15}

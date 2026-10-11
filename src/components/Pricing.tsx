@@ -58,9 +58,12 @@ const INCLUDED = [
 	'Вход по QR-коду',
 	'Абонементы и продление',
 	'Тренеры и расписание',
+	'Разовые тренировки',
+	'Автоотметка тренировок по QR',
 	'Услуги, пакеты, записи',
 	'Бар со складом и счетами',
-	'Статистика и печать отчётов',
+	'Статистика и пиковая загрузка',
+	'Печать отчётов и Excel',
 	'Страница клуба с фото',
 	'Акции и скидки',
 	'Замеры клиентов',
@@ -68,7 +71,7 @@ const INCLUDED = [
 	'Парные абонементы',
 	'Журнал правок',
 	'Обращения клиентов',
-	'Выгрузка в таблицы'
+	'Все будущие обновления'
 ]
 
 export function Pricing() {
@@ -76,17 +79,17 @@ export function Pricing() {
 
 	return (
 		<Section
-			id="pricing"
-			className="noise"
+			id='pricing'
+			className='noise'
 			decor={
 				<>
 					<TopEdge />
 					<GridBg
 						step={64}
-						fade="radial-gradient(ellipse 75% 65% at 50% 25%, black 10%, transparent 78%)"
+						fade='radial-gradient(ellipse 75% 65% at 50% 25%, black 10%, transparent 78%)'
 					/>
 					<Glow
-						className="right-0 top-1/3"
+						className='right-0 top-1/3'
 						size={640}
 						strength={0.16}
 					/>
@@ -94,18 +97,18 @@ export function Pricing() {
 			}
 		>
 			<SectionHead
-				kicker="Тарифы"
-				title="Платите за размер клуба, а не за функции"
-				lead="Во всех планах одно и то же приложение. Отличается только предел по числу действующих абонементов и персонала."
+				kicker='Тарифы'
+				title='Платите за размер клуба, а не за функции'
+				lead='Во всех планах одно и то же приложение. Отличается только предел по числу действующих абонементов и персонала.'
 				center
 			/>
 
 			{/* Переключатель периода */}
 			<Reveal delay={0.08}>
-				<div className="mt-10 flex justify-center md:mt-12">
-					<div className="inline-flex rounded-full border border-line bg-surface p-1">
+				<div className='mt-10 flex justify-center md:mt-12'>
+					<div className='inline-flex rounded-full border border-line bg-surface p-1'>
 						<button
-							type="button"
+							type='button'
 							onClick={() => setYear(false)}
 							className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${
 								!year ? 'bg-lime text-ink' : 'text-muted hover:text-white'
@@ -114,7 +117,7 @@ export function Pricing() {
 							На месяц
 						</button>
 						<button
-							type="button"
+							type='button'
 							onClick={() => setYear(true)}
 							className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition ${
 								year ? 'bg-lime text-ink' : 'text-muted hover:text-white'
@@ -134,21 +137,21 @@ export function Pricing() {
 			</Reveal>
 
 			{/* Карточки */}
-			<div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 xl:grid-cols-4">
+			<div className='mt-10 grid gap-4 md:mt-12 md:grid-cols-2 xl:grid-cols-4'>
 				{PLANS.map((p, i) => (
 					<Reveal
 						key={p.name}
 						delay={i * 0.07}
-						className="h-full"
+						className='h-full'
 					>
-						<TiltCard className="h-full">
+						<TiltCard className='h-full'>
 							<div
 								className={`flex h-full flex-col rounded-2xl p-7 transition ${
 									p.hot ? 'bg-lime text-ink' : 'card-grad text-white'
 								}`}
 							>
 								{p.hot && (
-									<span className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-ink/55">
+									<span className='mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-ink/55'>
 										Без ограничений
 									</span>
 								)}
@@ -168,9 +171,7 @@ export function Pricing() {
 								>
 									{year ? p.kztYear : p.kztMonth}
 								</p>
-								<p
-									className={`mt-1 text-xs ${p.hot ? 'text-ink/60' : 'text-faint'}`}
-								>
+								<p className={`mt-1 text-xs ${p.hot ? 'text-ink/60' : 'text-faint'}`}>
 									{p.month === 0
 										? 'навсегда'
 										: `${year ? p.year : p.month} $ · ${year ? 'в год' : 'в месяц'}`}
@@ -178,24 +179,14 @@ export function Pricing() {
 
 								<span
 									aria-hidden
-									className={`my-6 block h-px w-full ${
-										p.hot ? 'bg-ink/15' : 'bg-line'
-									}`}
+									className={`my-6 block h-px w-full ${p.hot ? 'bg-ink/15' : 'bg-line'}`}
 								/>
 
-								<p
-									className={`text-[15px] font-bold ${
-										p.hot ? 'text-ink' : 'text-white'
-									}`}
-								>
+								<p className={`text-[15px] font-bold ${p.hot ? 'text-ink' : 'text-white'}`}>
 									{p.clients}
 								</p>
 
-								<ul
-									className={`mt-4 space-y-2 text-sm ${
-										p.hot ? 'text-ink/70' : 'text-muted'
-									}`}
-								>
+								<ul className={`mt-4 space-y-2 text-sm ${p.hot ? 'text-ink/70' : 'text-muted'}`}>
 									{p.rows.map(r => (
 										<li key={r}>{r}</li>
 									))}
@@ -207,39 +198,37 @@ export function Pricing() {
 			</div>
 
 			<Reveal delay={0.1}>
-				<p className="mt-6 text-center text-sm text-faint">
-					Год стоит как девять месяцев. Сумма в тенге может отличаться из-за
-					курса.
+				<p className='mt-6 text-center text-sm text-faint'>
+					Год стоит как девять месяцев. Сумма в тенге может отличаться из-за курса.
 				</p>
 			</Reveal>
 
 			{/* Что входит */}
 			<Reveal delay={0.1}>
-				<div className="card-grad mt-16 p-7 md:mt-20 md:p-10">
-					<h3 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+				<div className='card-grad mt-16 p-7 md:mt-20 md:p-10'>
+					<h3 className='text-2xl font-extrabold tracking-tight text-white md:text-3xl'>
 						Всё это есть даже на бесплатном плане
 					</h3>
 
-					<ul className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+					<ul className='mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3'>
 						{INCLUDED.map(f => (
 							<li
 								key={f}
-								className="flex items-center gap-3"
+								className='flex items-center gap-3'
 							>
 								<Check
 									size={16}
-									className="shrink-0 text-lime"
+									className='shrink-0 text-lime'
 									aria-hidden
 								/>
-								<span className="text-[15px] text-white/90">{f}</span>
+								<span className='text-[15px] text-white/90'>{f}</span>
 							</li>
 						))}
 					</ul>
 
-					<p className="mt-8 text-sm leading-relaxed text-muted">
-						Тариф считается только по действующим абонементам. Сотрудники,
-						услуги, товары бара и посещения на цену не влияют. Парный абонемент
-						считается за один.
+					<p className='mt-8 text-sm leading-relaxed text-muted'>
+						Тариф считается только по действующим абонементам. Сотрудники, услуги, товары бара и
+						посещения на цену не влияют. Парный абонемент считается за один.
 					</p>
 				</div>
 			</Reveal>
@@ -265,31 +254,31 @@ export function Trial() {
 			decor={
 				<>
 					<LogoMark
-						className="-left-20 bottom-0"
+						className='-left-20 bottom-0'
 						width={820}
 						opacity={0.04}
 					/>
 					<Glow
-						className="left-1/3 top-0"
+						className='left-1/3 top-0'
 						size={600}
 						strength={0.14}
 					/>
 				</>
 			}
 		>
-			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+			<div className='grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20'>
 				<Reveal>
-					<p className="kicker">Начало работы</p>
-					<p className="mt-5 text-[7rem] font-extrabold leading-none tracking-[-0.06em] text-lime md:text-[10rem]">
+					<p className='kicker'>Начало работы</p>
+					<p className='mt-5 text-[7rem] font-extrabold leading-none tracking-[-0.06em] text-lime md:text-[10rem]'>
 						<CountUp
 							to={30}
 							duration={1.4}
 						/>
 					</p>
-					<h2 className="h2 mt-2">дней полного доступа</h2>
-					<p className="mt-5 max-w-[44ch] text-base leading-relaxed text-muted">
-						Без карты и предоплаты. Заводите клиентов, продаёте абонементы,
-						настраиваете каталоги — ограничений нет.
+					<h2 className='h2 mt-2'>дней полного доступа</h2>
+					<p className='mt-5 max-w-[44ch] text-base leading-relaxed text-muted'>
+						Без карты и предоплаты. Заводите клиентов, продаёте абонементы, настраиваете каталоги —
+						ограничений нет.
 					</p>
 				</Reveal>
 
@@ -299,14 +288,14 @@ export function Trial() {
 							key={t.d}
 							delay={i * 0.08}
 						>
-							<div className="flex gap-5 border-b border-line py-5 last:border-0 md:gap-7 md:py-6">
+							<div className='flex gap-5 border-b border-line py-5 last:border-0 md:gap-7 md:py-6'>
 								<span
 									aria-hidden
 									className={`mt-2 h-2.5 w-2.5 shrink-0 rounded-full ${
 										t.on ? 'bg-lime' : 'bg-line'
 									}`}
 								/>
-								<div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+								<div className='flex flex-wrap items-baseline gap-x-5 gap-y-1'>
 									<span
 										className={`min-w-[5.5rem] font-bold tracking-tight ${
 											t.on ? 'text-lime' : 'text-faint'
@@ -314,9 +303,7 @@ export function Trial() {
 									>
 										{t.d}
 									</span>
-									<span
-										className={`text-[15px] ${t.on ? 'text-white/90' : 'text-faint'}`}
-									>
+									<span className={`text-[15px] ${t.on ? 'text-white/90' : 'text-faint'}`}>
 										{t.t}
 									</span>
 								</div>
@@ -325,10 +312,9 @@ export function Trial() {
 					))}
 
 					<Reveal delay={0.3}>
-						<p className="mt-7 rounded-2xl border border-line bg-surface px-6 py-5 text-[15px] leading-relaxed text-muted">
-							Абонементы клиентов продолжат работать в любом случае — даже если
-							их больше предела бесплатного плана. Блокируется только продажа
-							новых.
+						<p className='mt-7 rounded-2xl border border-line bg-surface px-6 py-5 text-[15px] leading-relaxed text-muted'>
+							Абонементы клиентов продолжат работать в любом случае — даже если их больше предела
+							бесплатного плана. Блокируется только продажа новых.
 						</p>
 					</Reveal>
 				</div>

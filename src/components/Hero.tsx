@@ -1,3 +1,5 @@
+// src/components/Hero.tsx
+// Первый экран: бьём в боль владельца, сразу даём выход — бесплатно и без компьютера
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -5,16 +7,18 @@ import { StoreButtons } from './StoreButtons'
 import { Marquee, MaskLines } from './ui'
 
 const FACTS = [
-	'Сканер вместо карт',
-	'Счета в баре',
-	'Печать отчётов',
-	'Цены в тенге'
+	'Без компьютера и CRM',
+	'Клуб в телефоне 24/7',
+	'Бесплатно до 50 абонементов',
+	'Запуск за день'
 ]
 
 const TICKER = [
 	'Абонементы',
 	'QR на вход',
 	'Тренеры',
+	'Разовые тренировки',
+	'Пиковая загрузка',
 	'Замеры',
 	'Бар',
 	'Услуги',
@@ -22,6 +26,7 @@ const TICKER = [
 	'Страница клуба',
 	'Акции',
 	'Отчёты',
+	'Excel',
 	'Склад',
 	'Статистика'
 ]
@@ -31,8 +36,7 @@ const DESKTOP_QUERY = '(min-width: 768px)'
 
 function useIsDesktop() {
 	const [isDesktop, setIsDesktop] = useState(
-		() =>
-			typeof window !== 'undefined' && window.matchMedia(DESKTOP_QUERY).matches
+		() => typeof window !== 'undefined' && window.matchMedia(DESKTOP_QUERY).matches
 	)
 
 	useEffect(() => {
@@ -63,17 +67,17 @@ export function Hero() {
 
 	return (
 		<section
-			id="top"
-			className="relative overflow-hidden pt-[72px]"
+			id='top'
+			className='relative overflow-hidden pt-[72px]'
 		>
 			{/* Свечение за заголовком */}
 			<motion.div
 				aria-hidden
 				style={{ scale: glowScale }}
-				className="pointer-events-none absolute left-1/2 top-[16%] h-[900px] w-[900px] -translate-x-1/2 animate-breathe rounded-full opacity-60 blur-[130px]"
+				className='pointer-events-none absolute left-1/2 top-[16%] h-[900px] w-[900px] -translate-x-1/2 animate-breathe rounded-full opacity-60 blur-[130px]'
 			>
 				<div
-					className="h-full w-full rounded-full"
+					className='h-full w-full rounded-full'
 					style={{
 						background:
 							'radial-gradient(circle, rgba(184,242,41,0.32) 0%, rgba(184,242,41,0.10) 42%, transparent 70%)'
@@ -84,49 +88,48 @@ export function Hero() {
 			{/* Слабая сетка поверх фона */}
 			<div
 				aria-hidden
-				className="pointer-events-none absolute inset-0 opacity-[0.16]"
+				className='pointer-events-none absolute inset-0 opacity-[0.16]'
 				style={{
 					backgroundImage:
 						'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
 					backgroundSize: '72px 72px',
-					maskImage:
-						'radial-gradient(ellipse 80% 60% at 50% 35%, black 20%, transparent 75%)'
+					maskImage: 'radial-gradient(ellipse 80% 60% at 50% 35%, black 20%, transparent 75%)'
 				}}
 			/>
 
 			<motion.div
 				style={parallax}
-				className="relative mx-auto max-w-page px-5 pb-16 pt-16 text-center md:px-8 md:pb-20 md:pt-24"
+				className='relative mx-auto max-w-page px-5 pb-16 pt-16 text-center md:px-8 md:pb-20 md:pt-24'
 			>
 				{/* Что нового в приложении */}
 				<motion.a
-					href="#club"
+					href='#updates'
 					initial={{ opacity: 0, y: -10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-					className="group mb-9 inline-flex items-center gap-2.5 rounded-full border border-lime/35 bg-surface/70 py-1.5 pl-1.5 pr-4 text-[13px] font-semibold text-white/90 backdrop-blur transition hover:border-lime/70 md:mb-11"
+					className='group mb-9 inline-flex max-w-full items-center gap-2.5 rounded-full border border-lime/35 bg-surface/70 py-1.5 pl-1.5 pr-4 text-left text-[13px] font-semibold text-white/90 backdrop-blur transition hover:border-lime/70 md:mb-11'
 				>
-					<span className="rounded-full bg-lime px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink">
-						Новое
+					<span className='shrink-0 rounded-full bg-lime px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink'>
+						Версия 1.3
 					</span>
-					Страница клуба и акции
+					<span className='truncate'>Новая статистика и разовые тренировки</span>
 					<ArrowRight
 						size={15}
-						className="text-lime transition-transform group-hover:translate-x-0.5"
+						className='shrink-0 text-lime transition-transform group-hover:translate-x-0.5'
 						aria-hidden
 					/>
 				</motion.a>
 
-				<h1 className="display">
+				<h1 className='display'>
 					<MaskLines
 						delay={0.15}
 						lines={[
 							{
-								text: 'Весь клуб — с телефона',
+								text: 'Сколько клуб потерял,',
 								className: 'text-lime-soft'
 							},
 							{
-								text: 'Ни журналов, ни компьютера',
+								text: 'пока вас не было в зале?',
 								className: 'text-white'
 							}
 						]}
@@ -141,16 +144,15 @@ export function Hero() {
 						delay: 0.55,
 						ease: [0.22, 1, 0.36, 1]
 					}}
-					className="mx-auto mt-9 max-w-[48ch] text-lg font-semibold leading-snug text-muted md:mt-11 md:text-[26px]"
+					className='mx-auto mt-9 max-w-[50ch] text-lg font-semibold leading-snug text-muted md:mt-11 md:text-[24px]'
 				>
-					Продать абонемент, отметить приход, открыть счёт в баре, записать на
-					массаж, посмотреть выручку и распечатать отчёт — всё это делается
-					прямо со стойки.
+					Непродлённые абонементы, наличные мимо тетради, тренировки мимо кассы. GoGym записывает
+					каждую продажу и каждый вход, а вы видите весь клуб в телефоне — где бы ни были.
 				</motion.p>
 
 				<motion.ul
-					initial="hidden"
-					animate="show"
+					initial='hidden'
+					animate='show'
 					variants={{
 						hidden: {},
 						show: {
@@ -160,7 +162,7 @@ export function Hero() {
 							}
 						}
 					}}
-					className="mt-10 flex flex-wrap justify-center gap-2.5 md:mt-12 md:gap-3"
+					className='mt-10 flex flex-wrap justify-center gap-2.5 md:mt-12 md:gap-3'
 				>
 					{FACTS.map(f => (
 						<motion.li
@@ -181,7 +183,7 @@ export function Hero() {
 								duration: 0.5,
 								ease: [0.22, 1, 0.36, 1]
 							}}
-							className="pill"
+							className='pill'
 						>
 							{f}
 						</motion.li>
@@ -196,20 +198,20 @@ export function Hero() {
 						delay: 1,
 						ease: [0.22, 1, 0.36, 1]
 					}}
-					className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-14"
+					className='mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-14'
 				>
 					<a
-						href="#start"
-						className="btn-lime w-full sm:w-auto"
+						href='#start'
+						className='btn-lime w-full sm:w-auto'
 					>
-						Подключить зал
+						Подключить зал бесплатно
 					</a>
 
 					<a
-						href="#features"
-						className="btn-ghost w-full sm:w-auto"
+						href='#loss'
+						className='btn-ghost w-full sm:w-auto'
 					>
-						Что внутри
+						Посчитать потери
 					</a>
 				</motion.div>
 
@@ -224,8 +226,8 @@ export function Hero() {
 					}}
 				>
 					<StoreButtons
-						label="Скачать приложение"
-						className="mt-8 md:mt-10"
+						label='Клиентам — скачать приложение'
+						className='mt-8 md:mt-10'
 					/>
 				</motion.div>
 
@@ -236,10 +238,10 @@ export function Hero() {
 						delay: 1.4,
 						duration: 0.8
 					}}
-					className="mt-14 flex justify-center md:mt-16"
+					className='mt-14 flex justify-center md:mt-16'
 				>
 					<ChevronDown
-						className="animate-nudge text-muted"
+						className='animate-nudge text-muted'
 						size={26}
 						aria-hidden
 					/>
@@ -247,7 +249,7 @@ export function Hero() {
 			</motion.div>
 
 			{/* Бегущая строка возможностей */}
-			<div className="relative border-y border-line bg-surface/40">
+			<div className='relative border-y border-line bg-surface/40'>
 				<Marquee items={TICKER} />
 			</div>
 		</section>

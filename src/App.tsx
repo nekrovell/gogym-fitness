@@ -1,14 +1,21 @@
+// src/App.tsx
+// Порядок секций выстроен под владельца клуба:
+// боль → сколько это стоит → как решаем → доказательства → цена → заявка
 import { useEffect } from 'react'
 import { ClubPage, Promo } from './components/Club'
+import { Compare } from './components/Compare'
 import { Access, Notifications } from './components/Extra'
 import { Faq, Footer, Start, Why } from './components/Faq'
 import { Admin, ClientRest } from './components/Features'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
+import { LossCalc } from './components/LossCalc'
 import { Control, Money, Reports, Setup, Staff } from './components/Owner'
 import { Pricing, Trial } from './components/Pricing'
 import { Problem, Roles } from './components/Problem'
 import { Showcase } from './components/Showcase'
+import { Trainers } from './components/Trainers'
+import { Updates } from './components/Updates'
 import { Divider } from './components/decor'
 
 export default function App() {
@@ -41,40 +48,48 @@ export default function App() {
 			<Header />
 
 			<main>
+				{/* 1. Боль и её цена */}
 				<Hero />
 				<Problem />
+				<LossCalc />
+
+				{/* 2. Как это выглядит */}
 				<Roles />
-
-				{/* Телефон прилипает, экраны меняются по прокрутке */}
 				<Showcase />
-
-				<ClientRest />
-				<Admin />
-				<Staff />
-
-				{/* Что приложение делает без участия людей */}
-				<Notifications />
 
 				<Divider />
 
+				{/* 3. Владелец — тот, кто платит. Его выгода первой */}
 				<Money />
+				<Trainers />
 				<Reports />
-				<Setup />
+				<Control />
 
-				{/* Новое: витрина клуба и акции */}
+				<Divider />
+
+				{/* 4. Остальные роли */}
+				<Admin />
+				<Staff />
+				<ClientRest />
+				<Notifications />
+
+				{/* 5. Настройка и витрина клуба */}
+				<Setup />
 				<ClubPage />
 				<Promo />
 
-				<Control />
+				<Divider />
 
-				{/* Вход и разделение данных — перед разговором о деньгах */}
+				{/* 6. Доказательства: сравнение и живые обновления */}
+				<Compare />
+				<Updates />
 				<Access />
 
 				<Divider />
 
+				{/* 7. Деньги и заявка */}
 				<Pricing />
 				<Trial />
-
 				<Why />
 				<Faq />
 				<Start />

@@ -1,11 +1,14 @@
+// src/components/Header.tsx
+// Шапка: логотип, навигация, кнопка заявки и меню на телефоне
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import logo from '../assets/logo-dark-small.png'
 
 const NAV = [
-	{ label: 'Возможности', href: '#features' },
-	{ label: 'Роли', href: '#roles' },
-	{ label: 'Новое', href: '#club' },
+	{ label: 'Проблема', href: '#problem' },
+	{ label: 'Владельцу', href: '#money' },
+	{ label: 'Тренеры', href: '#trainers' },
+	{ label: 'Обновления', href: '#updates' },
 	{ label: 'Тарифы', href: '#pricing' },
 	{ label: 'Вопросы', href: '#faq' }
 ]
@@ -39,43 +42,43 @@ export function Header() {
 						: 'border-b border-transparent'
 				}`}
 			>
-				<div className="mx-auto flex h-[72px] max-w-page items-center gap-8 px-5 md:px-8">
+				<div className='mx-auto flex h-[72px] max-w-page items-center gap-8 px-5 md:px-8'>
 					<a
-						href="#top"
-						className="flex shrink-0 items-center"
-						aria-label="Go Gym Fitness — в начало"
+						href='#top'
+						className='flex shrink-0 items-center'
+						aria-label='GoGym Fitness — в начало'
 					>
 						<img
 							src={logo}
-							alt=""
-							className="h-8 w-auto md:h-9"
+							alt=''
+							className='h-8 w-auto md:h-9'
 						/>
 					</a>
 
-					<nav className="hidden flex-1 items-center gap-7 lg:flex">
+					<nav className='hidden flex-1 items-center gap-7 lg:flex'>
 						{NAV.map(n => (
 							<a
 								key={n.href}
 								href={n.href}
-								className="text-[15px] font-medium text-muted transition-colors hover:text-white"
+								className='text-[15px] font-medium text-muted transition-colors hover:text-white'
 							>
 								{n.label}
 							</a>
 						))}
 					</nav>
 
-					<div className="ml-auto flex items-center gap-3">
+					<div className='ml-auto flex items-center gap-3'>
 						<a
-							href="#start"
-							className="hidden rounded-full bg-white px-6 py-3 text-[14px] font-bold text-ink transition hover:bg-lime sm:inline-flex"
+							href='#start'
+							className='hidden rounded-full bg-white px-6 py-3 text-[14px] font-bold text-ink transition hover:bg-lime sm:inline-flex'
 						>
-							Подключить зал
+							Подключить бесплатно
 						</a>
 
 						<button
-							type="button"
+							type='button'
 							onClick={() => setOpen(v => !v)}
-							className="grid h-11 w-11 place-items-center rounded-full border border-line text-white lg:hidden"
+							className='grid h-11 w-11 place-items-center rounded-full border border-line text-white lg:hidden'
 							aria-label={open ? 'Закрыть меню' : 'Открыть меню'}
 							aria-expanded={open}
 						>
@@ -87,14 +90,14 @@ export function Header() {
 
 			{/* Меню на телефоне */}
 			{open && (
-				<div className="fixed inset-0 z-40 bg-ink pt-[72px] lg:hidden">
-					<nav className="flex flex-col px-5 pt-6">
+				<div className='fixed inset-0 z-40 overflow-y-auto bg-ink pt-[72px] lg:hidden'>
+					<nav className='flex flex-col px-5 pb-10 pt-6'>
 						{NAV.map((n, i) => (
 							<a
 								key={n.href}
 								href={n.href}
 								onClick={() => setOpen(false)}
-								className="animate-riseIn border-b border-line py-5 text-2xl font-bold tracking-tight text-white"
+								className='animate-riseIn border-b border-line py-5 text-2xl font-bold tracking-tight text-white'
 								style={{ animationDelay: `${i * 60}ms` }}
 							>
 								{n.label}
@@ -102,11 +105,11 @@ export function Header() {
 						))}
 
 						<a
-							href="#start"
+							href='#start'
 							onClick={() => setOpen(false)}
-							className="btn-lime mt-8 w-full"
+							className='btn-lime mt-8 w-full'
 						>
-							Подключить зал
+							Подключить бесплатно
 						</a>
 					</nav>
 				</div>

@@ -2,7 +2,7 @@
 // Кнопки скачивания из App Store и Google Play (официальные значки из public/badges)
 
 // Ссылки на страницы приложения. Пока пусто — кнопка не показывается
-const APP_STORE_URL = 'https://apps.apple.com/us/app/gogym-fitness/id6815078905'
+const APP_STORE_URL = 'https://apps.apple.com/kz/app/gogym-fitness/id6815078905?l=ru'
 
 const GOOGLE_PLAY_URL =
 	'https://play.google.com/store/apps/details?id=kz.gogym.fitness'

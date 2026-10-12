@@ -36,9 +36,24 @@ import auditLog from './assets/mockups/audit-log.webp'
 import feedback from './assets/mockups/feedback.webp'
 import reportPrint from './assets/mockups/report-print.webp'
 import reportSetup from './assets/mockups/report-setup.webp'
-import revenue from './assets/mockups/revenue.webp'
-import stats from './assets/mockups/stats.webp'
-import traffic from './assets/mockups/traffic.webp'
+
+// ── Новые скриншоты (1.2 и 1.3) ──
+// Когда снимете — раскомментируйте импорт и замените undefined ниже на имя
+import statsOverview from './assets/mockups/stats-overview.webp'
+import statsPeak from './assets/mockups/stats-peak.webp'
+import statsTop from './assets/mockups/stats-top.webp'
+import statsDetail from './assets/mockups/stats-detail.webp'
+import statsPeriod from './assets/mockups/stats-period.webp'
+import trainerPush from './assets/mockups/trainer-push.webp'
+import trainerStats from './assets/mockups/trainer-stats.webp'
+// import trainerHistory from './assets/mockups/trainer-history.webp'
+// import trainerInactive from './assets/mockups/trainer-inactive.webp'
+// import singleTraining from './assets/mockups/single-training.webp'
+// import clubPage from './assets/mockups/club-page.webp'
+// import clubPage2 from './assets/mockups/club-page-2.webp'
+import promoEditor from './assets/mockups/promo-editor.webp'
+import promoSale from './assets/mockups/promo-sale.webp'
+// import promoClient from './assets/mockups/promo-client.webp'
 
 export const M = {
 	// Клиент
@@ -64,11 +79,29 @@ export const M = {
 	staffEarnings: staffEarnings,
 
 	// Владелец клуба
-	stats: stats,
-	revenue: revenue,
-	traffic: traffic,
 	reportSetup: reportSetup,
 	reportPrint: reportPrint,
 	auditLog: auditLog,
-	feedback: feedback
+	feedback: feedback,
+
+	// Статистика (1.3) — старые stats/revenue/traffic устарели и убраны
+	statsOverview: statsOverview,
+	statsPeak: statsPeak,
+	statsTop: statsTop,
+	statsDetail: statsDetail,
+	statsPeriod: statsPeriod,
+
+	// Тренеры (1.2 и 1.3)
+	trainerPush: trainerPush,
+	trainerStats: trainerStats,
+	trainerHistory: undefined,
+	trainerInactive: undefined,
+	singleTraining: undefined,
+
+	// Страница клуба и акции
+	clubPage: undefined,
+	clubPage2: undefined,
+	promoEditor: promoEditor,
+	promoSale: promoSale,
+	promoClient: undefined
 } as Record<string, string | undefined>

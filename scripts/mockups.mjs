@@ -4,10 +4,10 @@ import path from 'node:path'
 import sharp from 'sharp'
 
 const dir = 'src/assets/mockups'
-const files = (await readdir(dir)).filter(f => f.endsWith('.png'))
+const files = (await readdir(dir)).filter(f => f.endsWith('.PNG'))
 
 for (const file of files) {
-	const out = path.join(dir, file.replace(/\.png$/, '.webp'))
+	const out = path.join(dir, file.replace(/\.PNG$/, '.webp'))
 
 	await sharp(path.join(dir, file))
 		.resize({ width: 800, withoutEnlargement: true })

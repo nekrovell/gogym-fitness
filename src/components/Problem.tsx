@@ -41,32 +41,32 @@ const PAIN = [
 export function Problem() {
 	return (
 		<Section
-			id='problem'
-			className='noise'
+			id="problem"
+			className="noise"
 			decor={
 				<>
 					<TopEdge />
 					<DotBg />
 					<Glow
-						className='-right-40 top-10'
+						className="-right-40 top-10"
 						size={520}
 						strength={0.14}
 					/>
 				</>
 			}
 		>
-			<div className='grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-20'>
-				<div className='lg:sticky lg:top-28 lg:self-start'>
+			<div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-20">
+				<div className="lg:sticky lg:top-28 lg:self-start">
 					<SectionHead
-						kicker='Узнаёте свой клуб?'
-						title='Деньги уходят тихо — и вы узнаёте последним'
-						lead='Дело не в плохих сотрудниках. Пока учёт держится на тетради и памяти администратора, клуб теряет клиентов и выручку, которых никто не видит.'
+						kicker="Узнаёте свой клуб?"
+						title="Деньги уходят тихо — и вы узнаёте последним"
+						lead="Дело не в плохих сотрудниках. Пока учёт держится на тетради и памяти администратора, клуб теряет клиентов и выручку, которых никто не видит."
 					/>
 
 					<Reveal delay={0.15}>
 						<a
-							href='#loss'
-							className='btn-ghost mt-9 hidden lg:inline-flex'
+							href="#loss"
+							className="btn-ghost mt-9 hidden lg:inline-flex"
 						>
 							Посчитать, сколько теряет мой клуб
 						</a>
@@ -79,17 +79,21 @@ export function Problem() {
 							key={p.t}
 							delay={Math.min(i, 3) * 0.06}
 						>
-							<div className='flex gap-6 border-b border-line py-7 last:border-0 md:gap-8 md:py-8'>
-								<span className='shrink-0 text-2xl font-extrabold tracking-tight text-line md:text-3xl'>
+							<div className="flex gap-6 border-b border-line py-7 last:border-0 md:gap-8 md:py-8">
+								<span className="shrink-0 text-2xl font-extrabold tracking-tight text-line md:text-3xl">
 									{String(i + 1).padStart(2, '0')}
 								</span>
 								<div>
-									<h3 className='text-lg font-bold tracking-tight text-white md:text-xl'>{p.t}</h3>
-									<p className='mt-2 text-[15px] leading-relaxed text-muted'>{p.d}</p>
-									<p className='mt-4 flex gap-2.5 text-[15px] font-semibold leading-snug text-lime'>
+									<h3 className="text-lg font-bold tracking-tight text-white md:text-xl">
+										{p.t}
+									</h3>
+									<p className="mt-2 text-[15px] leading-relaxed text-muted">
+										{p.d}
+									</p>
+									<p className="mt-4 flex gap-2.5 text-[15px] font-semibold leading-snug text-lime">
 										<ArrowRight
 											size={17}
-											className='mt-[2px] shrink-0'
+											className="mt-[2px] shrink-0"
 											aria-hidden
 										/>
 										<span>{p.fix}</span>
@@ -127,39 +131,42 @@ const ROLES = [
 export function Roles() {
 	return (
 		<Section
-			id='roles'
+			id="roles"
 			decor={
 				<>
 					<LogoMark
-						className='-left-24 top-1/2 -translate-y-1/2'
+						className="-left-24 top-1/2 -translate-y-1/2"
 						width={900}
 						opacity={0.035}
 					/>
 					<Glow
-						className='left-1/4 top-0'
+						className="left-1/4 top-0"
 						size={560}
 						strength={0.12}
 					/>
 				</>
 			}
 		>
-			<div className='grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-start lg:gap-20'>
-				<Reveal className='lg:sticky lg:top-28'>
-					<p className='kicker'>Одно приложение на весь клуб</p>
-					<p className='mt-6 text-[8rem] font-extrabold leading-none tracking-[-0.06em] text-lime md:text-[11rem]'>
+			<div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-start lg:gap-20">
+				<Reveal className="lg:sticky lg:top-28">
+					<p className="kicker">Одно приложение на весь клуб</p>
+					<p className="mt-6 text-[8rem] font-extrabold leading-none tracking-[-0.06em] text-lime md:text-[11rem]">
 						<CountUp
 							to={6}
 							duration={1.1}
 						/>
 					</p>
-					<h2 className='h2 mt-3'>
+					<h2 className="h2 mt-3">
 						<MaskLinesOnView
-							lines={[{ text: 'ролей — и каждый' }, { text: 'видит только своё' }]}
+							lines={[
+								{ text: 'ролей — и каждый' },
+								{ text: 'видит только своё' }
+							]}
 						/>
 					</h2>
-					<p className='mt-5 max-w-[42ch] text-base leading-relaxed text-muted'>
-						Администратор не увидит выручку клуба. Тренер — чужих клиентов. Клиент — ничего, кроме
-						себя. Всё видит только владелец.
+					<p className="mt-5 max-w-[42ch] text-base leading-relaxed text-muted">
+						Администратор не увидит выручку клуба. Тренер — чужих клиентов.
+						Клиент — ничего, кроме себя. Всё видит только владелец.
 					</p>
 				</Reveal>
 
@@ -169,7 +176,7 @@ export function Roles() {
 							key={r.t}
 							delay={i * 0.06}
 						>
-							<div className='flex flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-line py-5 last:border-0 md:py-6'>
+							<div className="flex flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-line py-5 last:border-0 md:py-6">
 								<h3
 									className={`min-w-[9rem] text-lg font-bold tracking-tight md:text-xl ${
 										r.accent ? 'text-white' : 'text-white/80'
@@ -177,7 +184,7 @@ export function Roles() {
 								>
 									{r.t}
 								</h3>
-								<p className='text-[15px] text-muted'>{r.d}</p>
+								<p className="text-[15px] text-muted">{r.d}</p>
 							</div>
 						</Reveal>
 					))}

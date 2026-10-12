@@ -1,5 +1,5 @@
 // src/components/Compare.tsx
-// Сравнение: тетрадь, программа на компьютере и GoGym.
+// Сравнение: тетрадь, программа на компьютере и GoGym Fitness.
 // Без названий чужих продуктов — сравниваем подходы, а не конкурентов
 import { Check, X } from 'lucide-react'
 import { Glow, GridBg } from './decor'
@@ -7,7 +7,7 @@ import { Reveal, Section, SectionHead } from './ui'
 
 type Cell = { t: string; ok?: boolean; bad?: boolean }
 
-const COLS = ['Тетрадь и WhatsApp', 'Программа на компьютере', 'GoGym']
+const COLS = ['Тетрадь и WhatsApp', 'Программа на компьютере', 'GoGym Fitness']
 
 const ROWS: { q: string; v: [Cell, Cell, Cell] }[] = [
 	{
@@ -73,7 +73,7 @@ function Mark({ c }: { c: Cell }) {
 		return (
 			<Check
 				size={16}
-				className='mt-[3px] shrink-0 text-lime'
+				className="mt-[3px] shrink-0 text-lime"
 				aria-hidden
 			/>
 		)
@@ -81,14 +81,14 @@ function Mark({ c }: { c: Cell }) {
 		return (
 			<X
 				size={16}
-				className='mt-[3px] shrink-0 text-red-300/80'
+				className="mt-[3px] shrink-0 text-red-300/80"
 				aria-hidden
 			/>
 		)
 	return (
 		<span
 			aria-hidden
-			className='mt-[9px] h-px w-3 shrink-0 bg-faint'
+			className="mt-[9px] h-px w-3 shrink-0 bg-faint"
 		/>
 	)
 }
@@ -96,15 +96,15 @@ function Mark({ c }: { c: Cell }) {
 export function Compare() {
 	return (
 		<Section
-			id='compare'
+			id="compare"
 			decor={
 				<>
 					<GridBg
 						step={70}
-						fade='radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 78%)'
+						fade="radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 78%)"
 					/>
 					<Glow
-						className='right-0 top-1/4'
+						className="right-0 top-1/4"
 						size={560}
 						strength={0.12}
 					/>
@@ -112,16 +112,16 @@ export function Compare() {
 			}
 		>
 			<SectionHead
-				kicker='Сравните'
-				title='Чем GoGym лучше того, что есть сейчас'
-				lead='Большинство клубов работает на тетради или на программе, привязанной к компьютеру на стойке. Вот в чём разница.'
+				kicker="Сравните"
+				title="Чем GoGym Fitness лучше того, что есть сейчас"
+				lead="Большинство клубов работает на тетради или на программе, привязанной к компьютеру на стойке. Вот в чём разница."
 			/>
 
 			{/* Широкий экран: таблица */}
 			<Reveal delay={0.1}>
-				<div className='mt-12 hidden overflow-hidden rounded-2xl border border-line md:mt-14 md:block'>
-					<div className='grid grid-cols-[1.1fr_1fr_1fr_1.1fr] bg-surface'>
-						<div className='px-5 py-4' />
+				<div className="mt-12 hidden overflow-hidden rounded-2xl border border-line md:mt-14 md:block">
+					<div className="grid grid-cols-[1.1fr_1fr_1fr_1.1fr] bg-surface">
+						<div className="px-5 py-4" />
 						{COLS.map((c, i) => (
 							<div
 								key={c}
@@ -137,14 +137,18 @@ export function Compare() {
 					{ROWS.map(r => (
 						<div
 							key={r.q}
-							className='grid grid-cols-[1.1fr_1fr_1fr_1.1fr] border-t border-line'
+							className="grid grid-cols-[1.1fr_1fr_1fr_1.1fr] border-t border-line"
 						>
-							<div className='px-5 py-4 text-[14px] font-bold text-white'>{r.q}</div>
+							<div className="px-5 py-4 text-[14px] font-bold text-white">
+								{r.q}
+							</div>
 							{r.v.map((c, i) => (
 								<div
 									key={i}
 									className={`flex gap-2.5 px-5 py-4 text-[14px] leading-snug ${
-										i === 2 ? 'bg-lime/[0.07] font-semibold text-white' : 'text-muted'
+										i === 2
+											? 'bg-lime/[0.07] font-semibold text-white'
+											: 'text-muted'
 									}`}
 								>
 									<Mark c={c} />
@@ -157,32 +161,32 @@ export function Compare() {
 			</Reveal>
 
 			{/* Телефон: карточка на каждый вопрос */}
-			<div className='mt-10 space-y-3 md:hidden'>
+			<div className="mt-10 space-y-3 md:hidden">
 				{ROWS.map((r, ri) => (
 					<Reveal
 						key={r.q}
 						delay={Math.min(ri, 3) * 0.05}
 					>
-						<div className='rounded-2xl border border-line bg-surface p-5'>
-							<p className='text-[15px] font-bold text-white'>{r.q}</p>
+						<div className="rounded-2xl border border-line bg-surface p-5">
+							<p className="text-[15px] font-bold text-white">{r.q}</p>
 
-							<div className='mt-3 flex gap-2.5 rounded-xl bg-lime/[0.09] px-3.5 py-3 text-[14px] font-semibold text-white'>
+							<div className="mt-3 flex gap-2.5 rounded-xl bg-lime/[0.09] px-3.5 py-3 text-[14px] font-semibold text-white">
 								<Mark c={r.v[2]} />
 								<span>
-									<span className='text-lime'>GoGym: </span>
+									<span className="text-lime">GoGym Fitness: </span>
 									{r.v[2].t}
 								</span>
 							</div>
 
-							<div className='mt-3 space-y-2'>
+							<div className="mt-3 space-y-2">
 								{r.v.slice(0, 2).map((c, i) => (
 									<div
 										key={i}
-										className='flex gap-2.5 text-[13px] leading-snug text-muted'
+										className="flex gap-2.5 text-[13px] leading-snug text-muted"
 									>
 										<Mark c={c} />
 										<span>
-											<span className='text-faint'>{COLS[i]}: </span>
+											<span className="text-faint">{COLS[i]}: </span>
 											{c.t}
 										</span>
 									</div>

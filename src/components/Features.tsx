@@ -1,51 +1,65 @@
 import { M } from '../mockups'
 import { Beam, Glow, GridBg } from './decor'
-import { Bullet, Phone, PhoneSwitcher, Reveal, Section, SectionHead } from './ui'
+import {
+	Bullet,
+	Phone,
+	PhoneSwitcher,
+	Reveal,
+	Section,
+	SectionHead
+} from './ui'
 
 // ── Клиент: абонемент и вход ──
 export function ClientMembership() {
 	return (
 		<Section>
-			<div className='grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20'>
+			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 				<Reveal>
-					<div className='mx-auto grid max-w-[640px] grid-cols-2 gap-6 md:gap-8'>
+					<div className="mx-auto grid max-w-[640px] grid-cols-2 gap-6 md:gap-8">
 						<Phone
 							src={M.membership}
-							label='Главный экран'
-							note='остаток и срок'
+							label="Главный экран"
+							note="остаток и срок"
 						/>
 						<Phone
 							src={M.qr}
-							label='QR на вход'
-							note='показал — прошёл'
-							className='mt-10'
+							label="QR на вход"
+							note="показал — прошёл"
+							className="mt-10"
 						/>
 					</div>
 				</Reveal>
 
 				<div>
 					<SectionHead
-						kicker='Клиент'
-						title='Абонемент лежит в телефоне'
-						lead='Ни карточек, ни бумаги. Клиент открывает приложение и видит, сколько посещений осталось и до какого числа.'
+						kicker="Клиент"
+						title="Абонемент лежит в телефоне"
+						lead="Ни карточек, ни бумаги. Клиент открывает приложение и видит, сколько посещений осталось и до какого числа."
 					/>
 
 					<Reveal delay={0.1}>
-						<ul className='mt-8 space-y-4 md:mt-10'>
+						<ul className="mt-8 space-y-4 md:mt-10">
 							<Bullet>
-								На входе показывает QR-код — администратор сканирует, посещение списывается само
+								На входе показывает QR-код — администратор сканирует, посещение
+								списывается само
 							</Bullet>
-							<Bullet>История посещений с датами: когда приходил, во сколько</Bullet>
-							<Bullet>Все абонементы за всё время — видно, что покупал раньше</Bullet>
-							<Bullet>Уведомление приходит заранее, когда абонемент подходит к концу</Bullet>
+							<Bullet>
+								История посещений с датами: когда приходил, во сколько
+							</Bullet>
+							<Bullet>
+								Все абонементы за всё время — видно, что покупал раньше
+							</Bullet>
+							<Bullet>
+								Уведомление приходит заранее, когда абонемент подходит к концу
+							</Bullet>
 						</ul>
 					</Reveal>
 
 					<Reveal delay={0.2}>
-						<div className='mt-9 rounded-2xl bg-lime p-6 md:mt-11 md:p-7'>
-							<p className='text-[15px] font-bold leading-snug text-ink md:text-base'>
-								Клиент больше не звонит узнать остаток и не спорит на входе. Администратору остаётся
-								продавать.
+						<div className="mt-9 rounded-2xl bg-lime p-6 md:mt-11 md:p-7">
+							<p className="text-[15px] font-bold leading-snug text-ink md:text-base">
+								Клиент больше не звонит узнать остаток и не спорит на входе.
+								Администратору остаётся продавать.
 							</p>
 						</div>
 					</Reveal>
@@ -88,53 +102,57 @@ export function ClientRest() {
 		<Section
 			decor={
 				<Glow
-					className='-left-32 bottom-0'
+					className="-left-32 bottom-0"
 					size={600}
 					strength={0.13}
 				/>
 			}
 		>
 			<SectionHead
-				kicker='Клиент'
-				title='Что ещё он делает сам'
-				lead='Всё это раньше требовало подойти к стойке и кого-то отвлечь.'
+				kicker="Клиент"
+				title="Что ещё он делает сам"
+				lead="Всё это раньше требовало подойти к стойке и кого-то отвлечь."
 			/>
 
-			<div className='mt-12 grid gap-x-10 gap-y-px md:mt-14 md:grid-cols-2 md:gap-x-16'>
+			<div className="mt-12 grid gap-x-10 gap-y-px md:mt-14 md:grid-cols-2 md:gap-x-16">
 				{CLIENT_BLOCKS.map((b, i) => (
 					<Reveal
 						key={b.t}
 						delay={(i % 2) * 0.08}
 					>
-						<div className='border-b border-line py-6 md:py-7'>
-							<h3 className='text-lg font-bold tracking-tight text-white md:text-xl'>{b.t}</h3>
-							<p className='mt-2 max-w-[46ch] text-[15px] leading-relaxed text-muted'>{b.d}</p>
+						<div className="border-b border-line py-6 md:py-7">
+							<h3 className="text-lg font-bold tracking-tight text-white md:text-xl">
+								{b.t}
+							</h3>
+							<p className="mt-2 max-w-[46ch] text-[15px] leading-relaxed text-muted">
+								{b.d}
+							</p>
 						</div>
 					</Reveal>
 				))}
 			</div>
 
 			<Reveal delay={0.1}>
-				<div className='mt-14 grid grid-cols-2 gap-8 md:mt-20 md:grid-cols-4 md:gap-6'>
+				<div className="mt-14 grid grid-cols-2 gap-8 md:mt-20 md:grid-cols-4 md:gap-6">
 					<Phone
 						src={M.schedule}
-						label='Расписание'
-						note='тренировки клиента'
+						label="Расписание"
+						note="тренировки клиента"
 					/>
 					<Phone
 						src={M.partner}
-						label='Код для партнёра'
-						note='абонемент на двоих'
+						label="Код для партнёра"
+						note="абонемент на двоих"
 					/>
 					<Phone
 						src={M.history}
-						label='История посещений'
-						note='когда приходил'
+						label="История посещений"
+						note="когда приходил"
 					/>
 					<Phone
 						src={M.booking}
-						label='Запись на услугу'
-						note='мастер и время'
+						label="Запись на услугу"
+						note="мастер и время"
 					/>
 				</div>
 			</Reveal>
@@ -146,49 +164,59 @@ export function ClientRest() {
 export function Admin() {
 	return (
 		<Section
-			className='noise'
+			className="noise"
 			decor={
 				<>
-					<GridBg fade='radial-gradient(ellipse 60% 70% at 75% 50%, black 10%, transparent 75%)' />
-					<Beam className='inset-y-0 right-0 w-2/3' />
+					<GridBg fade="radial-gradient(ellipse 60% 70% at 75% 50%, black 10%, transparent 75%)" />
+					<Beam className="inset-y-0 right-0 w-2/3" />
 				</>
 			}
 		>
-			<div className='grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20'>
-				<div className='order-2 lg:order-1'>
+			<div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+				<div className="order-2 lg:order-1">
 					<SectionHead
-						kicker='Ресепшн'
-						title='Стойка работает с телефона'
-						lead='Администратору не нужен компьютер. Всё, что он делает за смену, помещается в приложение.'
+						kicker="Ресепшн"
+						title="Стойка работает с телефона"
+						lead="Администратору не нужен компьютер. Всё, что он делает за смену, помещается в приложение."
 					/>
 
 					<Reveal delay={0.1}>
-						<ul className='mt-8 space-y-4 md:mt-10'>
+						<ul className="mt-8 space-y-4 md:mt-10">
 							<Bullet>
-								Сканер QR — посещение отмечается за секунду, абонемент списывается сам
+								Сканер QR — посещение отмечается за секунду, абонемент
+								списывается сам
 							</Bullet>
-							<Bullet>Продажа абонементов из каталога клуба, с выбором способа оплаты</Bullet>
-							<Bullet>Карточка клиента: абонемент, история, замеры, открытые счета</Bullet>
-							<Bullet>Счета в баре — открыть, добавить позиции, закрыть при оплате</Bullet>
-							<Bullet>Запись на услуги и продажа пакетов</Bullet>
 							<Bullet>
-								Разовая тренировка с тренером — по цене тренера, можно сразу отметить, что она
-								прошла
+								Продажа абонементов из каталога клуба, с выбором способа оплаты
+							</Bullet>
+							<Bullet>
+								Карточка клиента: абонемент, история, замеры, открытые счета
+							</Bullet>
+							<Bullet>
+								Счета в баре — открыть, добавить позиции, закрыть при оплате
+							</Bullet>
+							<Bullet>
+								Запись на услуги и продажа пакетов
+							</Bullet>
+							<Bullet>
+								Разовая тренировка с тренером — по цене тренера, можно сразу
+								отметить, что она прошла
 							</Bullet>
 						</ul>
 					</Reveal>
 
 					<Reveal delay={0.2}>
-						<div className='mt-9 rounded-2xl border border-line bg-surface p-6 md:mt-11 md:p-7'>
-							<p className='kicker'>Чего он не видит</p>
-							<p className='mt-3 text-[15px] leading-relaxed text-muted'>
-								Выручку клуба, себестоимость, настройки цен и каталогов. Это остаётся у владельца.
+						<div className="mt-9 rounded-2xl border border-line bg-surface p-6 md:mt-11 md:p-7">
+							<p className="kicker">Чего он не видит</p>
+							<p className="mt-3 text-[15px] leading-relaxed text-muted">
+								Выручку клуба, себестоимость, настройки цен и каталогов. Это
+								остаётся у владельца.
 							</p>
 						</div>
 					</Reveal>
 				</div>
 
-				<Reveal className='order-1 lg:order-2'>
+				<Reveal className="order-1 lg:order-2">
 					<PhoneSwitcher
 						items={[
 							{

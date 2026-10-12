@@ -39,21 +39,21 @@ import reportSetup from './assets/mockups/report-setup.webp'
 
 // ── Новые скриншоты (1.2 и 1.3) ──
 // Когда снимете — раскомментируйте импорт и замените undefined ниже на имя
-import statsOverview from './assets/mockups/stats-overview.webp'
-import statsPeak from './assets/mockups/stats-peak.webp'
-import statsTop from './assets/mockups/stats-top.webp'
-import statsDetail from './assets/mockups/stats-detail.webp'
-import statsPeriod from './assets/mockups/stats-period.webp'
-import trainerPush from './assets/mockups/trainer-push.webp'
-import trainerStats from './assets/mockups/trainer-stats.webp'
-// import trainerHistory from './assets/mockups/trainer-history.webp'
-// import trainerInactive from './assets/mockups/trainer-inactive.webp'
-// import singleTraining from './assets/mockups/single-training.webp'
-// import clubPage from './assets/mockups/club-page.webp'
-// import clubPage2 from './assets/mockups/club-page-2.webp'
+import clubPage2 from './assets/mockups/club-page-2.webp'
+import clubPage from './assets/mockups/club-page.webp'
+import promoClient from './assets/mockups/promo-client.webp'
 import promoEditor from './assets/mockups/promo-editor.webp'
 import promoSale from './assets/mockups/promo-sale.webp'
-// import promoClient from './assets/mockups/promo-client.webp'
+import singleTraining from './assets/mockups/single-training.webp'
+import statsDetail from './assets/mockups/stats-detail.webp'
+import statsOverview from './assets/mockups/stats-overview.webp'
+import statsPeak from './assets/mockups/stats-peak.webp'
+import statsPeriod from './assets/mockups/stats-period.webp'
+import statsTop from './assets/mockups/stats-top.webp'
+import trainerHistory from './assets/mockups/trainer-history.webp'
+import trainerInactive from './assets/mockups/trainer-inactive.webp'
+import trainerPush from './assets/mockups/trainer-push.webp'
+import trainerStats from './assets/mockups/trainer-stats.webp'
 
 export const M = {
 	// Клиент
@@ -94,14 +94,14 @@ export const M = {
 	// Тренеры (1.2 и 1.3)
 	trainerPush: trainerPush,
 	trainerStats: trainerStats,
-	trainerHistory: undefined,
-	trainerInactive: undefined,
-	singleTraining: undefined,
+	trainerHistory: trainerHistory,
+	trainerInactive: trainerInactive,
+	singleTraining: singleTraining,
 
 	// Страница клуба и акции
-	clubPage: undefined,
-	clubPage2: undefined,
+	clubPage: clubPage,
+	clubPage2: clubPage2,
 	promoEditor: promoEditor,
 	promoSale: promoSale,
-	promoClient: undefined
+	promoClient: promoClient
 } as Record<string, string | undefined>

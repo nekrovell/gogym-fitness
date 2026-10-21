@@ -112,9 +112,9 @@ export function Hero() {
 					className="group mb-9 inline-flex max-w-full items-center gap-2.5 rounded-full border border-lime/35 bg-surface/70 py-1.5 pl-1.5 pr-4 text-left text-[13px] font-semibold text-white/90 backdrop-blur transition hover:border-lime/70 md:mb-11"
 				>
 					<span className="shrink-0 rounded-full bg-lime px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink">
-						Версия 1.4
+						Версия 1.5
 					</span>
-					<span className="truncate">Склад бара для админа и защита от дублей</span>
+					<span className="truncate">Права администраторов и скидки под контролем</span>
 					<ArrowRight
 						size={15}
 						className="shrink-0 text-lime transition-transform group-hover:translate-x-0.5"
